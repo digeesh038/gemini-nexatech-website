@@ -85,6 +85,8 @@ const ContactPage = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [showErrors, setShowErrors] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -119,19 +121,52 @@ const ContactPage = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (!formData.nda || !formData.updates) {
       setShowErrors(true);
       return;
     }
-    setIsSubmitted(true);
+
+    setIsSending(true);
+    setIsError(false);
     setShowErrors(false);
+
+    const payload = new FormData();
+    payload.append("name", formData.name);
+    payload.append("business_name", formData.businessName);
+    payload.append("email", formData.email);
+    payload.append("phone", `${selectedCountry.code} ${formData.phone}`);
+    payload.append("message", formData.requirements);
+    payload.append("nda", formData.nda ? "Yes" : "No");
+    payload.append("updates", formData.updates ? "Yes" : "No");
+
+    try {
+      const response = await fetch("/sendmail.php", {
+        method: "POST",
+        body: payload,
+      });
+
+      const result = await response.text();
+
+      if (result.trim() === "success") {
+        setIsSubmitted(true);
+      } else {
+        setIsError(true);
+      }
+    } catch {
+      setIsError(true);
+    } finally {
+      setIsSending(false);
+    }
   };
 
   const handleReset = () => {
     setFormData(initialState);
     setIsSubmitted(false);
+    setIsSending(false);
+    setIsError(false);
     setSearchQuery("");
     setShowErrors(false);
   };
@@ -475,13 +510,47 @@ const ContactPage = () => {
                           * Please agree to both terms to continue
                         </p>
                       )}
+
+                      {isError && (
+                        <p className="text-[11px] text-red-400 font-bold tracking-wide">
+                          ⚠ Something went wrong. Please try again or contact us
+                          directly.
+                        </p>
+                      )}
                     </div>
 
                     <button
                       type="submit"
-                      className="w-1/2 mx-auto block bg-blue-600 hover:bg-gemini-orange text-white py-4 rounded-[1.25rem] font-black text-sm uppercase tracking-[0.2em] transition-all shadow-xl shadow-blue-900/40 active:scale-[0.98] mt-2"
+                      disabled={isSending}
+                      className="w-1/2 mx-auto flex items-center justify-center gap-2 bg-blue-600 hover:bg-gemini-orange disabled:opacity-60 disabled:cursor-not-allowed text-white py-4 rounded-[1.25rem] font-black text-sm uppercase tracking-[0.2em] transition-all shadow-xl shadow-blue-900/40 active:scale-[0.98] mt-2"
                     >
-                      Submit
+                      {isSending ? (
+                        <>
+                          <svg
+                            className="animate-spin h-4 w-4 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            />
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8v8z"
+                            />
+                          </svg>
+                          Sending…
+                        </>
+                      ) : (
+                        "Submit"
+                      )}
                     </button>
                   </form>
                 ) : (
