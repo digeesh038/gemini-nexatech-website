@@ -1,7 +1,13 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Container from "../components/common/Container";
 import { coreValues } from "../data/websiteData";
-import { FaRocket, FaEye, FaGem } from "react-icons/fa";
+import {
+  FaRocket,
+  FaEye,
+  FaGem,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa";
 import { useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -129,12 +135,16 @@ const AboutPage = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const goPrev = () => setActiveIndex((i) => Math.max(0, i - 1));
+  const goNext = () =>
+    setActiveIndex((i) => Math.min(journeyData.length - 1, i + 1));
+
   return (
     <div
       ref={sectionRef}
       className="bg-[#000510] min-h-screen pt-20 pb-10 overflow-hidden font-inter"
     >
-      {/* Hero Section */}
+      {/* ── Hero Section ── */}
       <section className="relative py-4 lg:py-6">
         <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-gemini-blue/10 to-transparent -z-10" />
         <Container>
@@ -172,27 +182,36 @@ const AboutPage = () => {
 
       <SectionDivider direction="both" />
 
+      {/* ── Mission / Vision ── */}
       <section className="py-8 lg:py-12 bg-[#000510] relative overflow-hidden">
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-gemini-blue/5 blur-[120px] rounded-full -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gemini-orange/5 blur-[120px] rounded-full translate-x-1/2 translate-y-1/2" />
 
         <Container>
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-12">
+            {/* Mission */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="group relative p-10 rounded-[2.5rem] bg-gradient-to-br from-[#001D3D]/50 to-transparent border border-white/5 hover:border-gemini-blue/30 transition-all duration-700 shadow-2xl overflow-hidden"
+              className="group relative p-6 lg:p-10 rounded-[2rem] lg:rounded-[2.5rem] bg-gradient-to-br from-[#001D3D]/50 to-transparent border border-white/5 hover:border-gemini-blue/30 transition-all duration-700 shadow-2xl overflow-hidden"
             >
-              <div className="absolute -top-10 -right-10 p-12 text-gemini-blue/30 text-[12rem] transition-all duration-1000 group-hover:text-gemini-blue/50 group-hover:scale-110 group-hover:-rotate-12 pointer-events-none">
+              {/* Hide giant icon on mobile */}
+              <div className="hidden lg:block absolute -top-10 -right-10 p-12 text-gemini-blue/30 text-[12rem] transition-all duration-1000 group-hover:text-gemini-blue/50 group-hover:scale-110 group-hover:-rotate-12 pointer-events-none">
                 <FaRocket />
               </div>
+              {/* Small icon visible on mobile */}
+              <div className="flex items-center gap-3 mb-3 lg:hidden">
+                <div className="w-9 h-9 rounded-xl bg-gemini-blue/20 flex items-center justify-center border border-gemini-blue/30">
+                  <FaRocket className="text-gemini-blue text-base" />
+                </div>
+              </div>
               <div className="relative z-10">
-                <div className="flex items-center gap-4 mb-6">
+                <div className="flex items-center gap-4 mb-4 lg:mb-6">
                   <div className="w-12 h-1.5 bg-gemini-blue rounded-full" />
                   <h3 className="typo-section">MISSION</h3>
                 </div>
-                <p className="typo-body italic">
+                <p className="typo-body italic text-sm lg:text-base leading-relaxed">
                   "Empowering businesses with innovative technology solutions
                   that drive efficiency, safety, and growth across industries
                   worldwide."
@@ -200,21 +219,27 @@ const AboutPage = () => {
               </div>
             </motion.div>
 
+            {/* Vision */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="group relative p-10 rounded-[2.5rem] bg-gradient-to-br from-[#001D3D]/30 to-transparent border border-white/5 hover:border-gemini-orange/30 transition-all duration-700 shadow-2xl overflow-hidden"
+              className="group relative p-6 lg:p-10 rounded-[2rem] lg:rounded-[2.5rem] bg-gradient-to-br from-[#001D3D]/30 to-transparent border border-white/5 hover:border-gemini-orange/30 transition-all duration-700 shadow-2xl overflow-hidden"
             >
-              <div className="absolute -top-10 -right-10 p-12 text-gemini-orange/30 text-[12rem] transition-all duration-1000 group-hover:text-gemini-orange/50 group-hover:scale-110 group-hover:rotate-12 pointer-events-none">
+              <div className="hidden lg:block absolute -top-10 -right-10 p-12 text-gemini-orange/30 text-[12rem] transition-all duration-1000 group-hover:text-gemini-orange/50 group-hover:scale-110 group-hover:rotate-12 pointer-events-none">
                 <FaEye />
               </div>
+              <div className="flex items-center gap-3 mb-3 lg:hidden">
+                <div className="w-9 h-9 rounded-xl bg-gemini-orange/20 flex items-center justify-center border border-gemini-orange/30">
+                  <FaEye className="text-gemini-orange text-base" />
+                </div>
+              </div>
               <div className="relative z-10">
-                <div className="flex items-center gap-4 mb-6">
+                <div className="flex items-center gap-4 mb-4 lg:mb-6">
                   <div className="w-12 h-1.5 bg-gemini-orange rounded-full" />
                   <h3 className="typo-section">VISION</h3>
                 </div>
-                <p className="typo-body text-md text-white italic">
+                <p className="typo-body text-sm lg:text-base text-white italic leading-relaxed">
                   "To be a global leader in smart, integrated, and sustainable
                   tech solutions that transform operations and create lasting
                   value for our clients and communities."
@@ -227,17 +252,17 @@ const AboutPage = () => {
 
       <SectionDivider direction="both" />
 
-      {/* Core Values Section */}
-      <section className="py-12 lg:py-16">
+      {/* ── Core Values ── */}
+      <section className="py-10 lg:py-16">
         <Container>
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 lg:mb-12">
             <h2 className="typo-heading mb-6">
               Our Core <span className="text-gemini-orange">Values</span>
             </h2>
             <div className="w-24 h-2 bg-gemini-blue mx-auto rounded-full" />
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8">
             {coreValues.map((value, idx) => (
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -249,22 +274,22 @@ const AboutPage = () => {
                   delay: idx * 0.1,
                 }}
                 key={idx}
-                className="relative p-10 rounded-[2.5rem] bg-[#001D3D]/40 backdrop-blur-xl border border-white/5 hover:border-gemini-blue/50 transition-all duration-700 group overflow-hidden"
+                className="relative p-5 lg:p-10 rounded-[1.5rem] lg:rounded-[2.5rem] bg-[#001D3D]/40 backdrop-blur-xl border border-white/5 hover:border-gemini-blue/50 transition-all duration-700 group overflow-hidden"
               >
-                {/* Visual Flair */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gemini-blue/5 blur-3xl rounded-full group-hover:bg-gemini-blue/20 transition-colors" />
 
                 <div className="relative z-10">
-                  <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-gemini-blue/20 to-gemini-blue/5 flex items-center justify-center mb-6 border border-white/5 group-hover:bg-gemini-blue transition-all duration-500 shadow-xl group-hover:rotate-[360deg]">
-                    <FaGem className="text-gemini-blue text-2xl group-hover:text-white transition-colors" />
+                  <div className="w-9 h-9 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl bg-gradient-to-br from-gemini-blue/20 to-gemini-blue/5 flex items-center justify-center mb-3 lg:mb-6 border border-white/5 group-hover:bg-gemini-blue transition-all duration-500 shadow-xl group-hover:rotate-[360deg]">
+                    <FaGem className="text-gemini-blue text-base lg:text-2xl group-hover:text-white transition-colors" />
                   </div>
-                  <h4 className="typo-subsection-white mb-4 group-hover:text-gemini-orange transition-colors">
+                  <h4 className="text-sm lg:text-base font-black text-white mb-2 lg:mb-4 group-hover:text-gemini-orange transition-colors leading-tight">
                     {value.title}
                   </h4>
-                  <p className="typo-body opacity-70">{value.description}</p>
+                  <p className="text-[11px] lg:text-sm text-white/60 leading-relaxed">
+                    {value.description}
+                  </p>
                 </div>
 
-                {/* Bottom line accent */}
                 <div className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-gemini-blue to-gemini-orange group-hover:w-full transition-all duration-700" />
               </motion.div>
             ))}
@@ -274,9 +299,9 @@ const AboutPage = () => {
 
       <SectionDivider direction="both" />
 
-      {/* Company Journey Interactive Section */}
-      <section className="relative min-h-[700px] flex items-center overflow-hidden py-6">
-        {/* Background Image with Overlay */}
+      {/* ── Company Journey ── */}
+      <section className="relative overflow-hidden py-6">
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <AnimatePresence mode="wait">
             <motion.img
@@ -291,93 +316,157 @@ const AboutPage = () => {
             />
           </AnimatePresence>
           <div className="absolute inset-0 bg-gradient-to-r from-[#000510] via-[#000510]/50 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t border-t-2 border-white/10 shadow-[5px_5px_60px_rgba(255, 255, 255, 0.6)] from-[#000510] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t border-t-2 border-white/10 from-[#000510] via-transparent to-transparent" />
         </div>
 
         <Container>
           <div className="relative z-10 max-w-5xl mx-auto">
-            {/* Row 1: Centered Label */}
+            {/* Label */}
             <div className="flex justify-center mb-6">
               <span className="bg-gemini-blue/20 text-blue-400 px-6 py-2 rounded-full typo-tab-heading text-[10px] backdrop-blur-md border border-white/5 uppercase tracking-[0.2em]">
                 OUR JOURNEY
               </span>
             </div>
 
-            {/* Row 2: Centered Year Display */}
-            <div className="flex justify-center mb-10 border-b border-white/10 pb-8">
-              <motion.div
-                key={activeIndex}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-white font-black text-7xl lg:text-9xl tracking-tighter"
-              >
-                {journeyData[activeIndex].year}
-              </motion.div>
-            </div>
+            {/* ── MOBILE Journey UI: prev/next card style ── */}
+            <div className="lg:hidden">
+              {/* Year + nav row */}
+              <div className="flex items-center justify-between mb-6 border-b border-white/10 pb-6">
+                <button
+                  onClick={goPrev}
+                  disabled={activeIndex === 0}
+                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white disabled:opacity-30 active:scale-90 transition-all"
+                  aria-label="Previous year"
+                >
+                  <FaChevronLeft className="text-sm" />
+                </button>
 
-            {/* Row 3: Heading & Description Grid */}
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-16 px-4">
-              <motion.h2
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="typo-heading text-3xl lg:text-5xl leading-[1.1] text-white"
-              >
-                Over 15+ Years of Innovation to Help Businesses Thrive!
-              </motion.h2>
+                <motion.div
+                  key={activeIndex}
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-white font-black text-6xl tracking-tighter"
+                >
+                  {journeyData[activeIndex].year}
+                </motion.div>
 
-              <motion.div
-                key={activeIndex}
+                <button
+                  onClick={goNext}
+                  disabled={activeIndex === journeyData.length - 1}
+                  className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white disabled:opacity-30 active:scale-90 transition-all"
+                  aria-label="Next year"
+                >
+                  <FaChevronRight className="text-sm" />
+                </button>
+              </div>
+
+              {/* Description */}
+              <motion.p
+                key={`desc-${activeIndex}`}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.4 }}
+                className="text-white/80 text-sm leading-relaxed border-l-2 border-gemini-blue/50 pl-4 mb-6"
               >
-                <p className="typo-body text-xl lg:text-lg opacity-80 leading-relaxed border-l border-gemini-blue/30 pl-6">
-                  {journeyData[activeIndex].description}
-                </p>
-              </motion.div>
+                {journeyData[activeIndex].description}
+              </motion.p>
+
+              {/* Progress indicator dots */}
+              <div className="flex items-center justify-center gap-1.5">
+                {journeyData.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveIndex(idx)}
+                    className={`rounded-full transition-all duration-300 ${
+                      idx === activeIndex
+                        ? "w-5 h-2 bg-gemini-blue"
+                        : "w-2 h-2 bg-white/20"
+                    }`}
+                    aria-label={`Go to ${journeyData[idx].year}`}
+                  />
+                ))}
+              </div>
+
+              {/* Counter label */}
+              <p className="text-center text-white/40 text-xs font-bold mt-3 uppercase tracking-widest">
+                {activeIndex + 1} / {journeyData.length}
+              </p>
             </div>
 
-            {/* Bottom Timeline Selector */}
-            <div className="mt-12 lg:mt-16">
-              <div className="relative">
-                {/* Timeline Line */}
-                <div className="absolute bottom-[16px] left-0 w-full h-[2px] bg-white/10" />
-
-                {/* Active Line Indicator */}
+            {/* ── DESKTOP Journey UI: original timeline ── */}
+            <div className="hidden lg:block">
+              {/* Year Display */}
+              <div className="flex justify-center mb-10 border-b border-white/10 pb-8">
                 <motion.div
-                  className="absolute bottom-[16px] left-0 h-[2px] bg-gemini-blue z-10"
-                  animate={{
-                    width: `${(activeIndex / (journeyData.length - 1)) * 100}%`,
-                  }}
-                  transition={{ type: "spring", stiffness: 100, damping: 20 }}
-                />
+                  key={activeIndex}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-white font-black text-9xl tracking-tighter"
+                >
+                  {journeyData[activeIndex].year}
+                </motion.div>
+              </div>
 
-                <div className="flex justify-between relative z-20">
-                  {journeyData.map((item, idx) => (
-                    <button
-                      key={item.year}
-                      onClick={() => setActiveIndex(idx)}
-                      className="group flex flex-col items-center cursor-pointer outline-none"
-                    >
-                      <motion.span
-                        className={`typo-tab-heading text-xs mb-4 transition-all duration-300 ${
-                          idx === activeIndex
-                            ? "text-white scale-125 font-black"
-                            : "text-white/40 group-hover:text-white/70"
-                        }`}
+              {/* Heading & Description */}
+              <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-16 px-4">
+                <motion.h2
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="typo-heading text-3xl lg:text-5xl leading-[1.1] text-white"
+                >
+                  Over 15+ Years of Innovation to Help Businesses Thrive!
+                </motion.h2>
+
+                <motion.div
+                  key={activeIndex}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <p className="typo-body text-xl lg:text-lg opacity-80 leading-relaxed border-l border-gemini-blue/30 pl-6">
+                    {journeyData[activeIndex].description}
+                  </p>
+                </motion.div>
+              </div>
+
+              {/* Timeline Selector */}
+              <div className="mt-12 lg:mt-16">
+                <div className="relative">
+                  <div className="absolute bottom-[16px] left-0 w-full h-[2px] bg-white/10" />
+                  <motion.div
+                    className="absolute bottom-[16px] left-0 h-[2px] bg-gemini-blue z-10"
+                    animate={{
+                      width: `${(activeIndex / (journeyData.length - 1)) * 100}%`,
+                    }}
+                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                  />
+                  <div className="flex justify-between relative z-20">
+                    {journeyData.map((item, idx) => (
+                      <button
+                        key={item.year}
+                        onClick={() => setActiveIndex(idx)}
+                        className="group flex flex-col items-center cursor-pointer outline-none"
                       >
-                        {item.year}
-                      </motion.span>
-                      <div
-                        className={`w-3 h-3 rounded-full border-2 transition-all duration-300 ${
-                          idx === activeIndex
-                            ? "bg-white border-gemini-blue scale-125 shadow-[0_0_10px_rgba(255,255,255,0.8)]"
-                            : "bg-[#000510] border-white/20 group-hover:border-white/50"
-                        }`}
-                      />
-                    </button>
-                  ))}
+                        <motion.span
+                          className={`typo-tab-heading text-xs mb-4 transition-all duration-300 ${
+                            idx === activeIndex
+                              ? "text-white scale-125 font-black"
+                              : "text-white/40 group-hover:text-white/70"
+                          }`}
+                        >
+                          {item.year}
+                        </motion.span>
+                        <div
+                          className={`w-3 h-3 rounded-full border-2 transition-all duration-300 ${
+                            idx === activeIndex
+                              ? "bg-white border-gemini-blue scale-125 shadow-[0_0_10px_rgba(255,255,255,0.8)]"
+                              : "bg-[#000510] border-white/20 group-hover:border-white/50"
+                          }`}
+                        />
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

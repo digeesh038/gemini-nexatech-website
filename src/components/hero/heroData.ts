@@ -1,7 +1,6 @@
 import zebraLogo from "../../assets/zebra.jpeg";
 import hidLogo from "../../assets/hid.jpeg";
 import impinjLogo from "../../assets/impinj.jpeg";
-import metalCraftLogo from "../../assets/metal_craft.jpeg";
 import xerafyLogo from "../../assets/xerafy.jpeg";
 
 export const HERO_DATA = {
@@ -20,7 +19,6 @@ export const HERO_DATA = {
             { name: "Zebra", src: zebraLogo },
             { name: "HID", src: hidLogo },
             { name: "Impinj", src: impinjLogo },
-            { name: "Metal Craft", src: metalCraftLogo },
             { name: "Xerafy", src: xerafyLogo },
         ]
     }

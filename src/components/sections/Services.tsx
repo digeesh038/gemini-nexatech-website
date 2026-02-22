@@ -59,14 +59,14 @@ const Services = () => {
     return (
       <section
         id="services-section"
-        className="bg-[#000510] py-16 px-4 overflow-hidden"
+        className="bg-[#000510] py-8 px-4 overflow-hidden"
       >
         <Container>
-          <div className="text-center mb-10">
-            <span className="text-[#FF8C00] font-bold text-xs tracking-[0.3em] uppercase mb-2 block">
+          <div className="text-center mb-6">
+            <span className="text-[#FF8C00] font-bold text-xs tracking-[0.3em] uppercase mb-1 block">
               Our Expertise
             </span>
-            <h2 className="text-3xl font-black text-white">Our Services</h2>
+            <h2 className="text-2xl font-black text-white">Our Services</h2>
           </div>
 
           <div
@@ -98,52 +98,42 @@ const Services = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
-                className="bg-[#00152F]/60 backdrop-blur-xl rounded-[32px] border border-white/10 p-6 flex flex-col items-center text-center shadow-2xl min-h-[440px] cursor-grab active:cursor-grabbing touch-none"
+                className="bg-[#00152F]/60 backdrop-blur-xl rounded-[28px] border border-white/10 p-4 flex flex-col items-center text-center shadow-2xl cursor-grab active:cursor-grabbing touch-none"
               >
-                <div className="w-12 h-12 bg-[#FF8C00]/10 rounded-xl flex items-center justify-center mb-4 border border-[#FF8C00]/20 pointer-events-none">
-                  <activeService.icon className="text-xl text-[#FF8C00]" />
+                <div className="w-10 h-10 bg-[#FF8C00]/10 rounded-xl flex items-center justify-center mb-2 border border-[#FF8C00]/20 pointer-events-none">
+                  <activeService.icon className="text-base text-[#FF8C00]" />
                 </div>
-                <h3 className="text-lg font-black text-white mb-3 uppercase tracking-tight pointer-events-none">
+                <h3 className="text-base font-black text-white mb-1.5 uppercase tracking-tight pointer-events-none">
                   {activeService.title}
                 </h3>
-                <p className="text-gray-400 text-xs leading-relaxed mb-4 px-2 pointer-events-none">
+                <p className="text-gray-400 text-[11px] leading-relaxed mb-2 px-1 pointer-events-none line-clamp-3">
                   {activeService.desc}
                 </p>
-                <div className="space-y-2 mb-5 w-full max-w-[280px] pointer-events-none">
+                <div className="space-y-1.5 mb-3 w-full max-w-[260px] pointer-events-none">
                   {activeService.points.slice(0, 2).map((point, idx) => (
                     <div
                       key={idx}
-                      className="flex items-center space-x-3 text-left"
+                      className="flex items-center space-x-2 text-left"
                     >
-                      <FaCheckCircle className="text-[#FF8C00] text-xs flex-shrink-0" />
-                      <span className="text-white/80 text-[10px] sm:text-xs font-medium uppercase tracking-wider leading-tight">
+                      <FaCheckCircle className="text-[#FF8C00] text-[10px] flex-shrink-0" />
+                      <span className="text-white/80 text-[10px] font-medium uppercase tracking-wider leading-tight">
                         {point}
                       </span>
                     </div>
                   ))}
                 </div>
-                <div className="mt-auto pointer-events-auto flex flex-col items-center gap-3">
+                <div className="mt-2 pointer-events-auto">
                   <Link
                     to={`/services/${activeService.id}`}
-                    className="px-8 py-3 bg-white text-[#0047AB] text-sm font-bold rounded-xl hover:bg-[#FF8C00] hover:text-white transition-all active:scale-95 shadow-lg block w-fit mx-auto"
+                    className="px-6 py-2 bg-white text-[#0047AB] text-xs font-bold rounded-xl hover:bg-[#FF8C00] hover:text-white transition-all active:scale-95 shadow-lg block w-fit mx-auto"
                   >
                     LEARN MORE
                   </Link>
-                  <button
-                    onClick={() =>
-                      document
-                        .getElementById("products")
-                        ?.scrollIntoView({ behavior: "smooth" })
-                    }
-                    className="text-[#FF8C00] text-[10px] font-black uppercase tracking-widest opacity-60 hover:opacity-100 transition-opacity"
-                  >
-                    Skip to Products ↓
-                  </button>
                 </div>
               </motion.div>
             </AnimatePresence>
 
-            <div className="flex justify-center gap-2 mt-6">
+            <div className="flex justify-center gap-2 mt-4">
               {servicesData.map((_, idx) => (
                 <div
                   key={idx}

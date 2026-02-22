@@ -12,10 +12,10 @@ const Industries = () => {
     <section
       id="industries-section"
       ref={containerRef}
-      className="bg-[#000510] relative overflow-hidden flex flex-col min-h-screen"
+      className="bg-[#000510] relative overflow-hidden flex flex-col lg:min-h-screen"
     >
       {/* Header Area */}
-      <div className="pt-20 lg:pt-24 pb-12 lg:pb-16 relative z-10 px-4 text-center">
+      <div className="pt-10 lg:pt-24 pb-6 lg:pb-16 relative z-10 px-4 text-center">
         <Container>
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -28,13 +28,13 @@ const Industries = () => {
                 Industries We Serve
               </span>
             </motion.div>
-            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-6 tracking-tight leading-tight">
+            <h2 className="text-2xl lg:text-5xl xl:text-6xl font-black text-white mb-3 lg:mb-6 tracking-tight leading-tight">
               Empowering Growth <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF8C00] to-orange-400">
                 Across Industries
               </span>
             </h2>
-            <p className="text-gray-400 text-lg lg:text-xl max-w-2xl mx-auto leading-relaxed">
+            <p className="text-gray-400 text-sm lg:text-xl max-w-2xl mx-auto leading-relaxed">
               We deliver smart security, tracking, and automation solutions
               across industries, protecting people, assets, and operations
               worldwide.
@@ -48,7 +48,7 @@ const Industries = () => {
         {industries.map((industry: any) => (
           <div
             key={industry.id}
-            className="industry-pillar relative group flex-[1] min-h-[300px] lg:min-h-0 cursor-pointer overflow-hidden border-b lg:border-b-0 lg:border-r border-white/10 bg-[#00152F]"
+            className="industry-pillar relative group flex-[1] min-h-[130px] lg:min-h-0 cursor-pointer overflow-hidden border-b lg:border-b-0 lg:border-r border-white/10 bg-[#00152F]"
           >
             {/* Background Image with Parallax Scale */}
             <div className="absolute inset-0 z-0">
@@ -77,10 +77,10 @@ const Industries = () => {
 
               {/* Mobile Title Area */}
               <div className="lg:hidden flex items-center justify-between w-full">
-                <h3 className="text-xl lg:text-3xl font-black text-white uppercase tracking-wider group-hover:text-[#FF8C00] transition-colors">
+                <h3 className="text-base lg:text-3xl font-black text-white uppercase tracking-wider group-hover:text-[#FF8C00] transition-colors">
                   {industry.shortTitle}
                 </h3>
-                <industry.icon className="text-3xl lg:text-4xl text-[#FF8C00] group-hover:scale-110 transition-transform" />
+                <industry.icon className="text-xl lg:text-4xl text-[#FF8C00] group-hover:scale-110 transition-transform" />
               </div>
 
               {/* Detailed Content (Reveals on Hover/Scroll Focus) */}

@@ -21,7 +21,7 @@ const AccordionImages = ({
 
   return (
     <div
-      className="flex gap-2 h-[360px] lg:h-[420px] w-full rounded-2xl overflow-hidden"
+      className="flex gap-2 h-[220px] md:h-[360px] lg:h-[420px] w-full rounded-2xl overflow-hidden"
       onMouseLeave={() => setHovered(null)}
     >
       {imgs.map((src, idx) => {
@@ -96,14 +96,15 @@ const ServiceDetail = () => {
   }
 
   return (
-    <div className="bg-[#000510] min-h-screen pt-24 pb-16 relative overflow-hidden font-inter">
+    <div className="bg-[#000510] min-h-screen pt-20 lg:pt-24 pb-16 relative overflow-hidden font-inter">
       {/* Dynamic Aura Background */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-gemini-blue/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-gemini-orange/5 blur-[120px] rounded-full pointer-events-none" />
 
-      <Container className="relative m-4 z-10 w-full">
+      <Container className="relative z-10 w-full">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 lg:mb-8">
-          <div className="flex-shrink-0">
+          {/* Return Home — hidden on mobile, phone's back button handles it */}
+          <div className="hidden md:flex flex-shrink-0">
             <Link
               to="/"
               className="group flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 px-4 py-2 rounded-full transition-all backdrop-blur-md"
@@ -119,7 +120,7 @@ const ServiceDetail = () => {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-2xl md:text-3xl xl:text-5xl font-black uppercase tracking-tight leading-tight bg-gradient-to-r from-white via-white to-gemini-orange bg-clip-text text-transparent"
+              className="text-xl md:text-3xl xl:text-5xl font-black uppercase tracking-tight leading-tight bg-gradient-to-r from-white via-white to-gemini-orange bg-clip-text text-transparent"
             >
               {service.title}
             </motion.h1>

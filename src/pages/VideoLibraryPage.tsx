@@ -116,7 +116,7 @@ const VideoLibraryPage = () => {
   return (
     <div className="bg-[#000510] min-h-screen font-inter">
       {/* ── Header ── */}
-      <div className="pt-28 pb-10 text-center">
+      <div className="pt-20 lg:pt-28 pb-6 lg:pb-10 text-center px-4">
         <motion.div
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -132,7 +132,7 @@ const VideoLibraryPage = () => {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, delay: 0.1 }}
-          className="text-4xl md:text-5xl font-black text-white tracking-tight"
+          className="text-3xl md:text-5xl font-black text-white tracking-tight"
         >
           Software{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF8C00] to-orange-400">
@@ -155,10 +155,10 @@ const VideoLibraryPage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.08 }}
                 onClick={() => handleCardClick(sw)}
-                className={`group relative bg-white rounded-[24px] overflow-hidden transition-all duration-300 hover:-translate-y-1.5 shadow-[0_4px_24px_rgba(0,0,0,0.12)] hover:shadow-[0_16px_48px_rgba(0,71,171,0.18)] flex flex-col h-full ${hasVideo ? "cursor-pointer" : "cursor-default"}`}
+                className={`group relative bg-white rounded-[24px] overflow-hidden transition-all duration-300 hover:-translate-y-1.5 active:scale-[0.98] shadow-[0_4px_24px_rgba(0,0,0,0.12)] hover:shadow-[0_16px_48px_rgba(0,71,171,0.18)] flex flex-col h-full ${hasVideo ? "cursor-pointer" : "cursor-default"}`}
               >
                 {/* Image / Placeholder area */}
-                <div className="relative w-full h-[180px] bg-gradient-to-br from-[#001a3d] to-[#000c1f] overflow-hidden flex-shrink-0">
+                <div className="relative w-full h-[160px] md:h-[180px] bg-gradient-to-br from-[#001a3d] to-[#000c1f] overflow-hidden flex-shrink-0">
                   {sw.image ? (
                     <img
                       src={sw.image}
@@ -176,11 +176,11 @@ const VideoLibraryPage = () => {
                   {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
-                  {/* Play overlay on hover — only if video exists */}
+                  {/* Play overlay — always visible on mobile, hover-only on desktop */}
                   {hasVideo && (
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <div className="w-14 h-14 rounded-full bg-[#0047AB] flex items-center justify-center shadow-lg">
-                        <FaPlay className="text-white text-base ml-1" />
+                    <div className="absolute inset-0 flex items-center justify-center md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#0047AB] flex items-center justify-center shadow-lg">
+                        <FaPlay className="text-white text-sm ml-1" />
                       </div>
                     </div>
                   )}
@@ -250,13 +250,13 @@ const VideoLibraryPage = () => {
               initial={{ scale: 0.92, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.92, opacity: 0 }}
-              className="relative w-full max-w-4xl bg-[#000c1f] border border-white/10 rounded-2xl shadow-[0_0_80px_rgba(0,71,171,0.4)] z-10 flex flex-col overflow-hidden"
-              style={{ maxHeight: "90vh" }}
+              className="relative w-full max-w-4xl bg-[#000c1f] border border-white/10 rounded-2xl shadow-[0_0_80px_rgba(0,71,171,0.4)] z-10 flex flex-col overflow-hidden mx-2 sm:mx-0"
+              style={{ maxHeight: "92vh" }}
             >
               {/* ── Close button — always visible, top-right corner ── */}
               <button
                 onClick={closeModal}
-                className="absolute top-3 right-3 z-20 w-9 h-9 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 flex items-center justify-center transition-all duration-200 backdrop-blur-sm"
+                className="absolute top-3 right-3 z-20 w-10 h-10 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 flex items-center justify-center transition-all duration-200 backdrop-blur-sm active:scale-90"
                 aria-label="Close video"
               >
                 <FaTimes className="text-white text-sm" />

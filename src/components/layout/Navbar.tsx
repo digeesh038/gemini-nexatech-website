@@ -338,7 +338,7 @@ const Navbar = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="overflow-hidden bg-gray-50/50 mt-1 rounded-xl"
+                        className="overflow-hidden bg-white/5 mt-1 rounded-xl"
                       >
                         <div className="px-2 py-3 space-y-1">
                           {services.map((service, index) => (
@@ -381,7 +381,7 @@ const Navbar = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="overflow-hidden bg-gray-50/50 mt-1 rounded-xl"
+                        className="overflow-hidden bg-white/5 mt-1 rounded-xl"
                       >
                         <div className="px-2 py-3 space-y-1">
                           {products.map((product, index) => (
@@ -393,7 +393,7 @@ const Navbar = () => {
                               className="w-full flex items-center space-x-3 px-4 py-2.5 hover:bg-white rounded-lg transition-all group"
                             >
                               <product.icon className="text-base text-[#FD8E18] group-hover:scale-110 transition-transform" />
-                              <span className="text-sm font-semibold text-gray-700 text-left">
+                              <span className="text-sm font-semibold text-gray-200 text-left">
                                 {product.title}
                               </span>
                             </button>
@@ -426,7 +426,7 @@ const Navbar = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="overflow-hidden bg-gray-50/50 mt-1 rounded-xl"
+                        className="overflow-hidden bg-white/5 mt-1 rounded-xl"
                       >
                         <div className="px-2 py-3 space-y-1">
                           {industries.map((ind, index) => (
@@ -436,7 +436,7 @@ const Navbar = () => {
                               className="w-full flex items-center space-x-3 px-4 py-2.5 hover:bg-white rounded-lg transition-all group"
                             >
                               <ind.icon className="text-base text-[#FD8E18] group-hover:scale-110 transition-transform" />
-                              <span className="text-sm font-semibold text-gray-700 text-left">
+                              <span className="text-sm font-semibold text-gray-200 text-left">
                                 {ind.title}
                               </span>
                             </button>

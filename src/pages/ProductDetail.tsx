@@ -30,11 +30,12 @@ const ProductDetail = () => {
   }
 
   return (
-    <div className="bg-[#000510] min-h-screen pt-28 pb-16">
+    <div className="bg-[#000510] min-h-screen pt-20 lg:pt-28 pb-16">
       <Container className="relative z-10 w-full">
         {/* Header Row: Return Home + Product Title */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 lg:mb-10">
-          <div className="flex-shrink-0">
+          {/* Return Home — hidden on mobile, phone's back button handles it */}
+          <div className="hidden md:flex flex-shrink-0">
             <Link
               to="/"
               className="group flex items-center gap-2 bg-white/5 hover:bg-white/10 border border-white/10 px-4 py-2 rounded-full transition-all backdrop-blur-md"
@@ -60,7 +61,7 @@ const ProductDetail = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-2xl md:text-3xl text-left xl:text-5xl font-black uppercase tracking-tight leading-tight bg-gradient-to-r from-white via-white to-gemini-orange bg-clip-text text-transparent"
+                className="text-xl md:text-3xl text-left xl:text-5xl font-black uppercase tracking-tight leading-tight bg-gradient-to-r from-white via-white to-gemini-orange bg-clip-text text-transparent"
               >
                 {product.title}
               </motion.h1>
@@ -85,8 +86,8 @@ const ProductDetail = () => {
           </div>
 
           {/* Column 2: Key Benefits (Balanced height) */}
-          <div className="lg:col-span-4 bg-[#050B16]/60 backdrop-blur-xl border border-white/5 p-6 xl:p-8 rounded-[40px] shadow-2xl flex flex-col h-full">
-            <h3 className="text-white font-black text-lg xl:text-xl mb-8 flex items-center gap-4">
+          <div className="lg:col-span-4 bg-[#050B16]/60 backdrop-blur-xl border border-white/5 p-6 xl:p-8 rounded-[40px] shadow-2xl flex flex-col">
+            <h3 className="text-white font-black text-lg xl:text-xl mb-5 lg:mb-8 flex items-center gap-4">
               <div className="w-10 h-10 rounded-xl bg-gemini-orange/10 flex items-center justify-center border border-gemini-orange/20 flex-shrink-0">
                 <FaCheckCircle className="text-gemini-orange" />
               </div>
@@ -113,8 +114,8 @@ const ProductDetail = () => {
           </div>
 
           {/* Column 3: Solutions (Balanced height) */}
-          <div className="lg:col-span-4 bg-[#00152F]/60 backdrop-blur-xl border border-white/5 p-6 xl:p-8 rounded-[40px] shadow-2xl flex flex-col h-full">
-            <h3 className="text-white font-black text-lg xl:text-xl mb-8 flex items-center gap-4">
+          <div className="lg:col-span-4 bg-[#00152F]/60 backdrop-blur-xl border border-white/5 p-6 xl:p-8 rounded-[40px] shadow-2xl flex flex-col">
+            <h3 className="text-white font-black text-lg xl:text-xl mb-5 lg:mb-8 flex items-center gap-4">
               <div className="w-10 h-10 rounded-xl bg-gemini-blue/10 flex items-center justify-center border border-gemini-blue/20 flex-shrink-0">
                 <FaChartLine className="text-gemini-blue" />
               </div>

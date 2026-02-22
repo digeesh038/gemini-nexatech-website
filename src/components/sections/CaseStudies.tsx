@@ -9,10 +9,10 @@ const CaseStudies = () => {
   return (
     <section
       id="cases"
-      className="py-24 bg-[#000510] overflow-hidden border-t border-white/5"
+      className="py-12 lg:py-24 bg-[#000510] overflow-hidden border-t border-white/5"
     >
       <Container>
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 lg:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -23,7 +23,7 @@ const CaseStudies = () => {
               Proven Performance
             </span>
           </motion.div>
-          <h2 className="text-4xl lg:text-6xl font-black text-white mb-6 tracking-tight">
+          <h2 className="text-3xl lg:text-6xl font-black text-white mb-4 lg:mb-6 tracking-tight">
             Success{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF8C00] to-blue-400">
               Stories
@@ -50,22 +50,22 @@ const CaseStudies = () => {
           {duplicatedStudies.map((study, index) => (
             <div
               key={`${study.id}-${index}`}
-              className="inline-block w-[350px] sm:w-[450px] mx-4 whitespace-normal"
+              className="inline-block w-[280px] sm:w-[450px] mx-3 whitespace-normal"
             >
-              <div className="h-full bg-[#00152F]/40 backdrop-blur-md rounded-[32px] border border-white/10 p-8 hover:border-[#0047AB]/50 transition-all duration-500 hover:bg-[#00152F]/60 group/card relative overflow-hidden flex flex-col">
+              <div className="h-full bg-[#00152F]/40 backdrop-blur-md rounded-[24px] border border-white/10 p-5 lg:p-8 hover:border-[#0047AB]/50 transition-all duration-500 hover:bg-[#00152F]/60 group/card relative overflow-hidden flex flex-col">
                 {/* Glow Effect */}
                 <div
                   className={`absolute -top-24 -right-24 w-48 h-48 bg-gradient-to-br ${study.color} opacity-0 group-hover/card:opacity-20 blur-[50px] transition-opacity duration-700`}
                 />
 
-                <div className="flex items-start justify-between mb-8">
+                <div className="flex items-start justify-between mb-4 lg:mb-8">
                   <div
-                    className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${study.color} flex items-center justify-center text-white text-2xl shadow-lg`}
+                    className={`w-10 h-10 lg:w-14 lg:h-14 rounded-xl lg:rounded-2xl bg-gradient-to-br ${study.color} flex items-center justify-center text-white text-lg lg:text-2xl shadow-lg`}
                   >
                     <study.icon />
                   </div>
                   <div className="text-right">
-                    <span className="text-[#FF8C00] font-black text-xl lg:text-2xl block">
+                    <span className="text-[#FF8C00] font-black text-lg lg:text-2xl block">
                       {study.impact.split(" ")[0]}
                     </span>
                     <span className="text-gray-500 text-[10px] uppercase font-bold tracking-widest">
@@ -78,12 +78,12 @@ const CaseStudies = () => {
                   <span className="text-white/40 text-[10px] uppercase font-bold tracking-[0.2em] mb-1 block">
                     Client: {study.client}
                   </span>
-                  <h3 className="text-xl font-bold text-white group-hover/card:text-[#0047AB] transition-colors">
+                  <h3 className="text-base lg:text-xl font-bold text-white group-hover/card:text-[#0047AB] transition-colors">
                     {study.title}
                   </h3>
                 </div>
 
-                <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                <p className="text-gray-400 text-xs lg:text-sm leading-relaxed mb-4 lg:mb-6">
                   {study.desc}
                 </p>
 
