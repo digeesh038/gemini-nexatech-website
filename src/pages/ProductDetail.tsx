@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import Container from "../components/common/Container";
 import { useEffect } from "react";
+import SEO from "../components/common/SEO";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -31,6 +32,10 @@ const ProductDetail = () => {
 
   return (
     <div className="bg-[#000510] min-h-screen pt-20 lg:pt-28 pb-16">
+      <SEO 
+        title={`${product.title} - Products`}
+        description={product.description}
+      />
       <Container className="relative z-10 w-full">
         {/* Header Row: Return Home + Product Title */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6 lg:mb-10">

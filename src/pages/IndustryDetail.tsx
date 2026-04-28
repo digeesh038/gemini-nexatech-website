@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { FaArrowLeft, FaIndustry, FaLightbulb, FaCheck } from "react-icons/fa";
 import Container from "../components/common/Container";
 import { useEffect } from "react";
+import SEO from "../components/common/SEO";
 
 const IndustryDetail = () => {
   const { id } = useParams();
@@ -26,6 +27,10 @@ const IndustryDetail = () => {
 
   return (
     <div className="bg-[#000510] min-h-screen pt-20 lg:pt-28 pb-16">
+      <SEO 
+        title={`${industry.title} Industry`}
+        description={industry.description}
+      />
       <Container className="relative z-10 w-full">
         {/* Header Row: Return Home + Industry Title */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4 lg:mb-8">

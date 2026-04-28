@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Container from "../components/common/Container";
+import SEO from "../components/common/SEO";
 import { FaArrowRight, FaCalendarAlt, FaUser } from "react-icons/fa";
 
 const BLOGS = [
@@ -117,6 +118,10 @@ const BlogCard = ({
 const BlogsPage = () => {
   return (
     <div className="bg-[#000510] min-h-screen pt-32 pb-24 overflow-hidden">
+      <SEO 
+        title="Tech Insights & Blogs"
+        description="Stay updated with the latest trends in AI, IoT, Cybersecurity, and Industrial Automation. Explore perspectives and insights from the Gemini Nexatech team."
+      />
       {/* BACKGROUND DECORATION */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-gemini-blue/10 blur-[120px] rounded-full -z-10" />
 

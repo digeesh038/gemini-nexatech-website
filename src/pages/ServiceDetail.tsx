@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { FaArrowLeft, FaCheck } from "react-icons/fa";
 import Container from "../components/common/Container";
 import { useEffect, useState } from "react";
+import SEO from "../components/common/SEO";
 
 /* ─────────────────────────────────────────────
    AccordionImages — Industries-style expand panels
@@ -97,6 +98,10 @@ const ServiceDetail = () => {
 
   return (
     <div className="bg-[#000510] min-h-screen pt-20 lg:pt-24 pb-16 relative overflow-hidden font-inter">
+      <SEO 
+        title={`${service.title} Service`}
+        description={service.description}
+      />
       {/* Dynamic Aura Background */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-gemini-blue/5 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-gemini-orange/5 blur-[120px] rounded-full pointer-events-none" />

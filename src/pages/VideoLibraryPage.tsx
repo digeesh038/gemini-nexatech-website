@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import webAppImg from "../assets/services/web_application_development.jpg";
+import SEO from "../components/common/SEO";
 
 // Auto-converts any YouTube URL format → embed URL
 function toEmbedUrl(url: string): string {
@@ -115,6 +116,10 @@ const VideoLibraryPage = () => {
 
   return (
     <div className="bg-[#000510] min-h-screen font-inter">
+      <SEO 
+        title="Software Library"
+        description="Explore Gemini Nexatech's software solutions including ProtectEx, TrackPro, Tyre Sense 360, and more. Innovative software for industrial safety and asset management."
+      />
       {/* ── Header ── */}
       <div className="pt-20 lg:pt-28 pb-6 lg:pb-10 text-center px-4">
         <motion.div

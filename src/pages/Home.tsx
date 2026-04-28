@@ -8,6 +8,7 @@ import CaseStudies from "../components/sections/CaseStudies";
 import Industries from "../components/sections/Industries";
 import ScheduleCallModal from "../components/common/ScheduleCallModal";
 import SectionDivider from "../components/common/SectionDivider";
+import SEO from "../components/common/SEO";
 
 const Home = () => {
   const { hash } = useLocation();
@@ -27,6 +28,10 @@ const Home = () => {
 
   return (
     <main>
+      <SEO 
+        title="Home"
+        description="Welcome to Gemini Nexatech - Where Ideas Meet Innovation. We provide cutting-edge engineering and digital solutions."
+      />
       <div className="relative">
         <Hero onScheduleCall={() => setIsModalOpen(true)} />
       </div>

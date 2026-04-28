@@ -13,6 +13,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Stats from "../components/sections/Stats";
 import SectionDivider from "../components/common/SectionDivider";
+import SEO from "../components/common/SEO";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -144,6 +145,10 @@ const AboutPage = () => {
       ref={sectionRef}
       className="bg-[#000510] min-h-screen pt-20 pb-10 overflow-hidden font-inter"
     >
+      <SEO 
+        title="About Us"
+        description="Learn about Gemini Nexatech's legacy, mission, and vision. We are global leaders in AI-driven industrial safety and operational excellence with over 15 years of innovation."
+      />
       {/* ── Hero Section ── */}
       <section className="relative py-4 lg:py-6">
         <div className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-gemini-blue/10 to-transparent -z-10" />
