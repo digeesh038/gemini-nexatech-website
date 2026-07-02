@@ -1,4 +1,4 @@
-import customSoftwareImg from "../assets/services/Custom-Software-Development.webp";
+import customSoftwareImg from "../assets/services/Custom-Software-Development-opt2.webp";
 import customSoftwareImg1 from "../assets/services/Custom-Software-Development1.webp";
 import webAppImg from "../assets/services/web_application_development.webp";
 import webAppImg1 from "../assets/services/web_application_development1.webp";

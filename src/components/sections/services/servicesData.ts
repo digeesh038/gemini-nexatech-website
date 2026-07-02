@@ -13,7 +13,7 @@ import {
     FaTools,
 } from "react-icons/fa";
 
-import customSoftwareImg from "../../../assets/services/Custom-Software-Development.webp";
+import customSoftwareImg from "../../../assets/services/Custom-Software-Development-opt2.webp";
 import webAppImg from "../../../assets/services/web_application_development.webp";
 import mobileAppImg from "../../../assets/services/mobile-app-development.webp";
 import uiUxImg from "../../../assets/services/ui_ux.webp";

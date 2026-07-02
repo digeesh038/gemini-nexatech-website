@@ -7,11 +7,11 @@ import {
     FaPlane,
 } from "react-icons/fa";
 import oilGasImg from "../../../assets/industries/Oil-1-opt.webp";
-import manufacturingImg from "../../../assets/industries/manufacturing.webp";
-import energyImg from "../../../assets/industries/energy-utilities.webp";
-import constructionImg from "../../../assets/industries/construction.webp";
+import manufacturingImg from "../../../assets/industries/manufacturing-opt2.webp";
+import energyImg from "../../../assets/industries/energy-utilities-opt2.webp";
+import constructionImg from "../../../assets/industries/construction-opt2.webp";
 import logisticsImg from "../../../assets/industries/transportation.webp";
-import aviationImg from "../../../assets/industries/aviation.webp";
+import aviationImg from "../../../assets/industries/aviation-opt2.webp";
 
 export const INDUSTRIES_DATA = [
     {

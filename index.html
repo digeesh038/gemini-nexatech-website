@@ -10,25 +10,41 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" />
   </noscript>
   
-  <!-- Deferred Google Tag Manager -->
+  <!-- Deferred Google Tag Manager via User Interaction -->
   <script>
-    setTimeout(function() {
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-KZHF8MQ4');
+    (function() {
+      var gtmLoaded = false;
+      function loadGTM() {
+        if (gtmLoaded) return;
+        gtmLoaded = true;
 
-      var script = document.createElement('script');
-      script.src = "https://www.googletagmanager.com/gtag/js?id=G-46XD2N0Z1T";
-      script.async = true;
-      document.head.appendChild(script);
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KZHF8MQ4');
 
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-46XD2N0Z1T');
-    }, 6000);
+        var script = document.createElement('script');
+        script.src = "https://www.googletagmanager.com/gtag/js?id=G-46XD2N0Z1T";
+        script.async = true;
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-46XD2N0Z1T');
+
+        ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(function(e) {
+          window.removeEventListener(e, loadGTM);
+        });
+      }
+      
+      // Load GTM on first interaction or fallback after 10s
+      ['scroll', 'mousemove', 'touchstart', 'keydown'].forEach(function(e) {
+        window.addEventListener(e, loadGTM, { once: true, passive: true });
+      });
+      setTimeout(loadGTM, 10000);
+    })();
   </script>
   <!-- End Deferred Google Tag Manager -->
 

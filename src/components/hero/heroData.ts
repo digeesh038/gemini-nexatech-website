@@ -1,4 +1,4 @@
-import zebraLogo from "../../assets/zebra.webp";
+import zebraLogo from "../../assets/zebra-opt2.webp";
 import hidLogo from "../../assets/hid.webp";
 import impinjLogo from "../../assets/impinj.webp";
 import xerafyLogo from "../../assets/xerafy.webp";

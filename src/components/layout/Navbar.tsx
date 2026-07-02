@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "../../assets/GN.webp";
+import logo from "../../assets/GN-opt2.webp";
 import { FaChevronDown } from "react-icons/fa";
 import { useNavbarAnimations } from "./Navbar/NavbarAnimations";
 import { useNavbarManager } from "./Navbar/NavbarManager";
