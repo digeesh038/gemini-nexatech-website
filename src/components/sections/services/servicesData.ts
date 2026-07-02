@@ -15,11 +15,11 @@ import {
 
 import customSoftwareImg from "../../../assets/services/Custom-Software-Development.jpg";
 import webAppImg from "../../../assets/services/web_application_development.jpg";
-import mobileAppImg from "../../../assets/services/mobile-app-development.png";
+import mobileAppImg from "../../../assets/services/mobile-app-development.webp";
 import uiUxImg from "../../../assets/services/ui_ux.webp";
 import aiDevImg from "../../../assets/services/ai-development.webp";
 import consultingImg from "../../../assets/services/Software-Consulting.webp";
-import cloudDevOpsImg from "../../../assets/services/cloud_devops.png";
+import cloudDevOpsImg from "../../../assets/services/cloud_devops.webp";
 import apiIntegrationImg from "../../../assets/services/api_integration.jpg";
 import enterpriseAppImg from "../../../assets/services/enterprise-application-development.webp";
 import iotImg from "../../../assets/services/iot.webp";
