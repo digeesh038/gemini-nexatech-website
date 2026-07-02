@@ -13,18 +13,18 @@ import {
     FaTools,
 } from "react-icons/fa";
 
-import customSoftwareImg from "../../../assets/services/Custom-Software-Development.jpg";
-import webAppImg from "../../../assets/services/web_application_development.jpg";
+import customSoftwareImg from "../../../assets/services/Custom-Software-Development.webp";
+import webAppImg from "../../../assets/services/web_application_development.webp";
 import mobileAppImg from "../../../assets/services/mobile-app-development.webp";
 import uiUxImg from "../../../assets/services/ui_ux.webp";
 import aiDevImg from "../../../assets/services/ai-development.webp";
-import consultingImg from "../../../assets/services/Software-Consulting.webp";
+import consultingImg from "../../../assets/services/Software-Consulting-opt.webp";
 import cloudDevOpsImg from "../../../assets/services/cloud_devops.webp";
-import apiIntegrationImg from "../../../assets/services/api_integration.jpg";
+import apiIntegrationImg from "../../../assets/services/api_integration.webp";
 import enterpriseAppImg from "../../../assets/services/enterprise-application-development.webp";
 import iotImg from "../../../assets/services/iot.webp";
 import dataAnalyticsImg from "../../../assets/services/data-analytics-techniques.avif";
-import maintenanceImg from "../../../assets/services/application-support.jpg";
+import maintenanceImg from "../../../assets/services/application-support.webp";
 
 export interface ServiceItem {
     id: string;

@@ -1,6 +1,6 @@
 import { FaPhone, FaPlay } from "react-icons/fa";
 import AnimatedServices from "./AnimatedServices";
-import heroImage from "../../assets/hero_section_image.jpg";
+import heroImage from "../../assets/hero_section_image.webp";
 import { useHeroManager } from "./HeroManager";
 import { useHeroAnimations } from "./HeroAnimations";
 import { services } from "../../data/websiteData";

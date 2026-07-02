@@ -1,27 +1,27 @@
-import customSoftwareImg from "../assets/services/Custom-Software-Development.jpg";
+import customSoftwareImg from "../assets/services/Custom-Software-Development.webp";
 import customSoftwareImg1 from "../assets/services/Custom-Software-Development1.webp";
-import webAppImg from "../assets/services/web_application_development.jpg";
-import webAppImg1 from "../assets/services/web_application_development1.jpg";
+import webAppImg from "../assets/services/web_application_development.webp";
+import webAppImg1 from "../assets/services/web_application_development1.webp";
 import mobileAppImg from "../assets/services/mobile-app-development.webp";
-import mobileAppImg1 from "../assets/services/mobile-app-development1.png";
+import mobileAppImg1 from "../assets/services/mobile-app-development1.webp";
 import uiUxImg from "../assets/services/ui_ux.webp";
 import uiUxImg1 from "../assets/services/ui_ux1.webp";
 import aiDevImg from "../assets/services/ai-development.webp";
 import aiDevImg1 from "../assets/services/ai-development1.webp";
-import consultingImg from "../assets/services/Software-Consulting.webp";
+import consultingImg from "../assets/services/Software-Consulting-opt.webp";
 import consultingImg1 from "../assets/services/Software-Consulting1.webp";
 import cloudDevOpsImg from "../assets/services/cloud_devops.webp";
 import cloudDevOpsImg1 from "../assets/services/cloud_devops1.webp";
-import apiIntegrationImg from "../assets/services/api_integration.jpg";
-import apiIntegrationImg1 from "../assets/services/api_integration1.jpg";
+import apiIntegrationImg from "../assets/services/api_integration.webp";
+import apiIntegrationImg1 from "../assets/services/api_integration1.webp";
 import enterpriseAppImg from "../assets/services/enterprise-application-development.webp";
 import enterpriseAppImg1 from "../assets/services/enterprise-application-development1.webp";
 import iotImg from "../assets/services/iot.webp";
 import iotImg1 from "../assets/services/iot1.webp";
 import dataAnalyticsImg from "../assets/services/data-analytics-techniques.avif";
 import dataAnalyticsImg1 from "../assets/services/data-analytics-techniques1.avif";
-import maintenanceImg from "../assets/services/application-support.jpg";
-import maintenanceImg1 from "../assets/services/application-support1.jpg";
+import maintenanceImg from "../assets/services/application-support.webp";
+import maintenanceImg1 from "../assets/services/application-support1.webp";
 
 export const services = [
     {

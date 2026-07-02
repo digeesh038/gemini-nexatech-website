@@ -11,7 +11,7 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import { useEffect, useState } from "react";
-import webAppImg from "../assets/services/web_application_development.jpg";
+import webAppImg from "../assets/services/web_application_development.webp";
 import SEO from "../components/common/SEO";
 
 // Auto-converts any YouTube URL format → embed URL

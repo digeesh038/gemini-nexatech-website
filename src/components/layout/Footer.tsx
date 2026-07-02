@@ -104,9 +104,9 @@ const Footer = () => {
                     : "lg:col-span-4"
               } space-y-2 items-start text-left`}
             >
-              <h4 className="text-white font-black uppercase tracking-widest text-sm border-l-4 border-gemini-orange pl-4 w-full">
+              <h3 className="text-white font-black uppercase tracking-widest text-sm border-l-4 border-gemini-orange pl-4 w-full">
                 {section.title}
-              </h4>
+              </h3>
               <ul className="space-y-2 pt-2">
                 {section.links?.map((link, lIdx) => (
                   <li key={lIdx} className="list-none">
@@ -143,22 +143,24 @@ const Footer = () => {
                 ))}
 
                 {section.title === "Contact Info" && (
-                  <div className="flex flex-wrap gap-2 pl-2 mt-4">
-                    {socials.map((social, idx) => (
-                      <a
-                        key={idx}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={social.label}
-                        style={{ "--hover-color": social.color } as any}
-                        className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-[var(--hover-color)] hover:bg-white/10 hover:border-[var(--hover-color)]/30 transition-all group"
-                      >
-                        <span className="sr-only">{social.label}</span>
-                        <social.icon className="text-xl group-hover:scale-110 transition-transform" />
-                      </a>
-                    ))}
-                  </div>
+                  <li className="list-none">
+                    <div className="flex flex-wrap gap-2 pl-2 mt-4">
+                      {socials.map((social, idx) => (
+                        <a
+                          key={idx}
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={social.label}
+                          style={{ "--hover-color": social.color } as any}
+                          className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-[var(--hover-color)] hover:bg-white/10 hover:border-[var(--hover-color)]/30 transition-all group"
+                        >
+                          <span className="sr-only">{social.label}</span>
+                          <social.icon className="text-xl group-hover:scale-110 transition-transform" />
+                        </a>
+                      ))}
+                    </div>
+                  </li>
                 )}
               </ul>
             </motion.div>
@@ -270,24 +272,26 @@ const Footer = () => {
                           ))}
 
                           {section.title === "Contact Info" && (
-                            <div className="flex flex-wrap gap-2 pl-4 mt-3">
-                              {socials.map((social, sIdx) => (
-                                <a
-                                  key={sIdx}
-                                  href={social.href}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  aria-label={social.label}
-                                  style={
-                                    { "--hover-color": social.color } as any
-                                  }
-                                  className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 active:text-[var(--hover-color)] active:bg-white/10 transition-all"
-                                >
-                                  <span className="sr-only">{social.label}</span>
-                                  <social.icon className="text-lg" />
-                                </a>
-                              ))}
-                            </div>
+                            <li className="list-none">
+                              <div className="flex flex-wrap gap-2 pl-4 mt-3">
+                                {socials.map((social, sIdx) => (
+                                  <a
+                                    key={sIdx}
+                                    href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={social.label}
+                                    style={
+                                      { "--hover-color": social.color } as any
+                                    }
+                                    className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 active:text-[var(--hover-color)] active:bg-white/10 transition-all"
+                                  >
+                                    <span className="sr-only">{social.label}</span>
+                                    <social.icon className="text-lg" />
+                                  </a>
+                                ))}
+                              </div>
+                            </li>
                           )}
                         </ul>
                       </motion.div>

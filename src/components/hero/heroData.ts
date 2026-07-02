@@ -1,7 +1,7 @@
-import zebraLogo from "../../assets/zebra.jpeg";
-import hidLogo from "../../assets/hid.jpeg";
-import impinjLogo from "../../assets/impinj.jpeg";
-import xerafyLogo from "../../assets/xerafy.jpeg";
+import zebraLogo from "../../assets/zebra.webp";
+import hidLogo from "../../assets/hid.webp";
+import impinjLogo from "../../assets/impinj.webp";
+import xerafyLogo from "../../assets/xerafy.webp";
 
 export const HERO_DATA = {
     heading: "Your Digital Partner for",

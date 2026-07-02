@@ -294,6 +294,7 @@ const Products = () => {
                   {/* Desktop hover overlay */}
                   <Link
                     to={`/products/${product.id}`}
+                    aria-label={`Explore ${product.title}`}
                     className="hidden md:flex absolute inset-0 z-20 items-center justify-center bg-[#00152F]/90 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 backdrop-blur-md rounded-[32px]"
                   >
                     <span className="bg-white text-gemini-blue font-black py-3 px-8 rounded-xl transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl flex items-center gap-2 whitespace-nowrap">

@@ -6,12 +6,12 @@ import {
     FaTruck,
     FaPlane,
 } from "react-icons/fa";
-import oilGasImg from "../../../assets/industries/Oil-1.webp";
-import manufacturingImg from "../../../assets/industries/manufacturing.jpg";
-import energyImg from "../../../assets/industries/energy-utilities.jpg";
-import constructionImg from "../../../assets/industries/construction.jpg";
-import logisticsImg from "../../../assets/industries/transportation.jpg";
-import aviationImg from "../../../assets/industries/aviation.jpg";
+import oilGasImg from "../../../assets/industries/Oil-1-opt.webp";
+import manufacturingImg from "../../../assets/industries/manufacturing.webp";
+import energyImg from "../../../assets/industries/energy-utilities.webp";
+import constructionImg from "../../../assets/industries/construction.webp";
+import logisticsImg from "../../../assets/industries/transportation.webp";
+import aviationImg from "../../../assets/industries/aviation.webp";
 
 export const INDUSTRIES_DATA = [
     {
