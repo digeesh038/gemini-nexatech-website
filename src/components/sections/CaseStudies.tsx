@@ -68,14 +68,14 @@ const CaseStudies = () => {
                     <span className="text-[#FF8C00] font-black text-lg lg:text-2xl block">
                       {study.impact.split(" ")[0]}
                     </span>
-                    <span className="text-gray-500 text-[10px] uppercase font-bold tracking-widest">
+                    <span className="text-gray-400 text-[10px] uppercase font-bold tracking-widest">
                       {study.impact.split(" ").slice(1).join(" ")}
                     </span>
                   </div>
                 </div>
 
                 <div className="mb-4">
-                  <span className="text-white/40 text-[10px] uppercase font-bold tracking-[0.2em] mb-1 block">
+                  <span className="text-white/60 text-[10px] uppercase font-bold tracking-[0.2em] mb-1 block">
                     Client: {study.client}
                   </span>
                   <h3 className="text-base lg:text-xl font-bold text-white group-hover/card:text-[#0047AB] transition-colors">

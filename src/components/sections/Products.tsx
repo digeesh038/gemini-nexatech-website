@@ -68,6 +68,7 @@ const MobileProductCard = ({
     <div className="mt-auto">
       <Link
         to={`/products/${product.id}`}
+        aria-label={`Explore ${product.title}`}
         className="flex items-center gap-1.5 bg-[#FF8C00] text-white font-black text-xs py-2 px-4 rounded-xl shadow-lg active:scale-95 transition-transform w-fit"
       >
         Explore <span>→</span>
@@ -199,10 +200,11 @@ const Products = () => {
               <button
                 key={idx}
                 onClick={() => goTo(idx)}
+                aria-label={`Go to slide ${idx + 1}`}
                 className={`rounded-full transition-all duration-300 ${
                   idx === activeIdx
-                    ? "w-5 h-2 bg-[#FF8C00]"
-                    : "w-2 h-2 bg-white/20"
+                    ? "w-10 h-3 bg-[#FF8C00]"
+                    : "w-3 h-3 bg-white/20"
                 }`}
               />
             ))}
