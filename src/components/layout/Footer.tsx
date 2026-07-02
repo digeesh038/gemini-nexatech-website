@@ -68,7 +68,7 @@ const Footer = () => {
                 <span className="text-gemini-blue">GEMINI </span>
                 <span className="text-gemini-orange">NEXATECH</span>
               </span>
-              <span className="text-[10px] text-gray-500 uppercase tracking-[0.165em] font-bold mt-2">
+              <span className="text-[10px] text-gray-400 uppercase tracking-[0.165em] font-bold mt-2">
                 WHERE IDEAS MEETS INNOVATION
               </span>
             </div>
@@ -107,7 +107,7 @@ const Footer = () => {
               <h4 className="text-white font-black uppercase tracking-widest text-sm border-l-4 border-gemini-orange pl-4 w-full">
                 {section.title}
               </h4>
-              <div className="space-y-2 pt-2">
+              <ul className="space-y-2 pt-2">
                 {section.links?.map((link, lIdx) => (
                   <li key={lIdx} className="list-none">
                     <button
@@ -159,7 +159,7 @@ const Footer = () => {
                     ))}
                   </div>
                 )}
-              </div>
+              </ul>
             </motion.div>
           ))}
         </div>
@@ -178,7 +178,7 @@ const Footer = () => {
                 <span className="text-gemini-blue">GEMINI </span>
                 <span className="text-gemini-orange">NEXATECH</span>
               </span>
-              <span className="text-[10px] text-gray-500 uppercase tracking-[0.165em] font-bold mt-2">
+              <span className="text-[10px] text-gray-400 uppercase tracking-[0.165em] font-bold mt-2">
                 WHERE IDEAS MEETS INNOVATION
               </span>
             </div>
@@ -231,7 +231,7 @@ const Footer = () => {
                         transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <div className="pb-5 space-y-3 pl-1">
+                        <ul className="pb-5 space-y-3 pl-1">
                           {section.links?.map((link, lIdx) => (
                             <li key={lIdx} className="list-none">
                               <button
@@ -287,7 +287,7 @@ const Footer = () => {
                               ))}
                             </div>
                           )}
-                        </div>
+                        </ul>
                       </motion.div>
                     )}
                   </AnimatePresence>

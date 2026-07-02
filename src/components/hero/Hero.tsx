@@ -40,6 +40,7 @@ const Hero = ({ onScheduleCall }: HeroProps) => {
             <motion.img
               key={currentIndex}
               src={services[currentIndex].image || heroImage}
+              alt={services[currentIndex].title || "Gemini Nexatech Hero Background"}
               initial={{ opacity: 0, scale: 1.1 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
@@ -108,9 +109,9 @@ const Hero = ({ onScheduleCall }: HeroProps) => {
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
             <div className="flex-shrink-0 relative overflow-hidden rounded-lg shadow-lg">
               <div className="absolute inset-0 bg-gradient-to-r from-[#0047AB] via-[#0066CC] to-[#0047AB]"></div>
-              <h3 className="relative z-10 text-xs sm:text-sm lg:text-base font-black text-white px-8 py-3 whitespace-nowrap drop-shadow-md uppercase tracking-[0.2em]">
+              <h2 className="relative z-10 text-xs sm:text-sm lg:text-base font-black text-white px-8 py-3 whitespace-nowrap drop-shadow-md uppercase tracking-[0.2em]">
                 {trustedByLabel}
-              </h3>
+              </h2>
             </div>
 
             <div className="flex-1 overflow-hidden relative w-full">

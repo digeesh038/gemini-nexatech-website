@@ -275,6 +275,7 @@ const Navbar = () => {
 
           <button
             onClick={toggleMobileMenu}
+            aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
             className={`lg:hidden p-2 rounded-md ${textColor} hover:bg-white/10 transition-colors`}
           >
             <svg

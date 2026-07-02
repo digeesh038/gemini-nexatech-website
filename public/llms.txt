@@ -1,7 +1,13 @@
-Gemini Nexatech is a premier technology partner specializing in digital innovation, custom software development, and specialized engineering. We provide cutting-edge solutions across various industries including Technology, Manufacturing, Transportation, Energy, Construction, Aviation, and Oil & Gas.
+# Gemini Nexatech
 
-# Services
+> Gemini Nexatech is a premier technology partner specializing in digital innovation, custom software development, and specialized engineering. We provide cutting-edge solutions across various industries including Technology, Manufacturing, Transportation, Energy, Construction, Aviation, and Oil & Gas.
+
+## Services
 - Software Consulting
+- UI/UX Design
+- Quality Assurance
+- Cloud Solutions
+- Hardware Implementation
 - Custom Software Development
 - Cloud DevOps
 - Application Support
@@ -12,7 +18,7 @@ Gemini Nexatech is a premier technology partner specializing in digital innovati
 - API Integration
 - Data Analytics Techniques
 
-# Products
+## Products
 - ProtectEx
 - TrackPro
 - Tyre Sense 360
@@ -20,7 +26,7 @@ Gemini Nexatech is a premier technology partner specializing in digital innovati
 - TrackBus
 - NexTrace
 
-# Contact
-Email: sales@gemininexatech.com
-Phone: +91 9003275271
-Address: Campus-1a, MILLENIA BUSINESS PARK-I, Perungudi, Chennai, Tamil Nadu 600096
+## Contact Information
+- **Email:** sales@gemininexatech.com
+- **Phone:** +91 9003275271
+- **Address:** Campus-1a, MILLENIA BUSINESS PARK-I, Perungudi, Chennai, Tamil Nadu 600096
