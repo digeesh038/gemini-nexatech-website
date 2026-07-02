@@ -47,10 +47,10 @@ const Insights = () => {
                 </p>
 
                 <div className="flex items-center justify-between pt-6 border-t border-white/5">
-                  <div className="flex items-center gap-2 text-xs text-gray-500 font-bold uppercase">
+                  <div className="flex items-center gap-2 text-xs text-gray-400 font-bold uppercase">
                     <FaUser className="text-gemini-blue" /> {insight.author}
                   </div>
-                  <button className="text-white hover:text-gemini-orange transition-colors">
+                  <button aria-label={`Read more about ${insight.title}`} className="text-white hover:text-gemini-orange transition-colors">
                     <FaArrowRight />
                   </button>
                 </div>

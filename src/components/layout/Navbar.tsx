@@ -61,7 +61,7 @@ const Navbar = () => {
                 <span className="text-gemini-orange">NEXATECH</span>
               </span>
               <span
-                className={`text-[9px] sm:text-[10px] lg:text-[11px] ${isHome && !isScrolled ? "text-white/60" : "text-gray-500"} tracking-[0.13em] uppercase font-bold leading-tight mt-1 transition-colors duration-500`}
+                className={`text-[9px] sm:text-[10px] lg:text-[11px] ${isHome && !isScrolled ? "text-white/60" : "text-gray-400"} tracking-[0.13em] uppercase font-bold leading-tight mt-1 transition-colors duration-500`}
               >
                 Where Ideas Meet Innovation
               </span>
@@ -276,8 +276,11 @@ const Navbar = () => {
           <button
             onClick={toggleMobileMenu}
             aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu-content"
             className={`lg:hidden p-2 rounded-md ${textColor} hover:bg-white/10 transition-colors`}
           >
+            <span className="sr-only">{isMobileMenuOpen ? "Close menu" : "Open menu"}</span>
             <svg
               className="h-6 w-6"
               fill="none"
@@ -306,6 +309,7 @@ const Navbar = () => {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
+              id="mobile-menu-content"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}

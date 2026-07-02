@@ -152,8 +152,9 @@ const Footer = () => {
                         rel="noopener noreferrer"
                         aria-label={social.label}
                         style={{ "--hover-color": social.color } as any}
-                        className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-[var(--hover-color)] hover:bg-white/10 hover:border-[var(--hover-color)]/30 transition-all group"
+                        className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-[var(--hover-color)] hover:bg-white/10 hover:border-[var(--hover-color)]/30 transition-all group"
                       >
+                        <span className="sr-only">{social.label}</span>
                         <social.icon className="text-xl group-hover:scale-110 transition-transform" />
                       </a>
                     ))}
@@ -280,8 +281,9 @@ const Footer = () => {
                                   style={
                                     { "--hover-color": social.color } as any
                                   }
-                                  className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 active:text-[var(--hover-color)] active:bg-white/10 transition-all"
+                                  className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/40 active:text-[var(--hover-color)] active:bg-white/10 transition-all"
                                 >
+                                  <span className="sr-only">{social.label}</span>
                                   <social.icon className="text-lg" />
                                 </a>
                               ))}
