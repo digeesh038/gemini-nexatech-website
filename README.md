@@ -44,7 +44,7 @@
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/rajesh-m98/gemini-nexatech-website.git
+   git clone https://github.com/nexatechg-svg/gemini_website.git
    ```
 
 2. **Navigate to the directory**:
