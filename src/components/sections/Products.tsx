@@ -201,12 +201,16 @@ const Products = () => {
                 key={idx}
                 onClick={() => goTo(idx)}
                 aria-label={`Go to slide ${idx + 1}`}
-                className={`rounded-full transition-all duration-300 ${
-                  idx === activeIdx
-                    ? "w-10 h-3 bg-[#FF8C00]"
-                    : "w-3 h-3 bg-white/20"
-                }`}
-              />
+                className="w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300"
+              >
+                <span 
+                  className={`rounded-full transition-all duration-300 ${
+                    idx === activeIdx
+                      ? "w-10 h-3 bg-[#FF8C00]"
+                      : "w-3 h-3 bg-white/20"
+                  }`} 
+                />
+              </button>
             ))}
           </div>
 
