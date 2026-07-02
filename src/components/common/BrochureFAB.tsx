@@ -1,59 +1,51 @@
-import { useState, useEffect } from "react";
-import { usePDF } from "@react-pdf/renderer";
-import { BrochurePDF } from "./BrochurePDF";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaFilePdf, FaSpinner } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 
 const BrochureFAB = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
 
-  // Explicitly generate the PDF instance
-  const [instance, updateInstance] = usePDF({
-    document: <BrochurePDF />,
-  });
+  const handleDownload = async () => {
+    if (isLoading) return;
+    
+    try {
+      setIsLoading(true);
+      console.log("📄 [PDF Engine]: Building document dynamically...");
+      
+      // Dynamically import the PDF renderer and the document component
+      const [ { pdf }, { BrochurePDF } ] = await Promise.all([
+        import("@react-pdf/renderer"),
+        import("./BrochurePDF")
+      ]);
 
-  // Debug Logging for PDF System
-  useEffect(() => {
-    if (instance.loading) {
-      console.log("📄 [PDF Engine]: Building document...");
-    } else if (instance.error) {
-      console.error("❌ [PDF Engine] Error:", instance.error);
-    } else if (instance.url) {
+      const blob = await pdf(<BrochurePDF />).toBlob();
+      const url = URL.createObjectURL(blob);
+      
       console.log("✅ [PDF Engine]: Ready for download!");
-      console.log("🔗 Preview Link:", instance.url);
+      console.log("🔗 Preview Link:", url);
       console.group("📂 Brochure Content Mapping:");
       console.log("- Brand: Gemini Nexatech");
       console.log("- Target: Official Corporate Brochure");
       console.log("- Format: A4 (Helvetica-Standard)");
       console.groupEnd();
-    }
-  }, [instance.loading, instance.error, instance.url]);
 
-  // Refresh PDF if data changes (though it shouldn't often)
-  useEffect(() => {
-    updateInstance(<BrochurePDF />);
-  }, [updateInstance]);
-
-  const handleDownload = () => {
-    if (instance.loading || !instance.url) {
-      console.log("PDF not ready yet...");
-      return;
-    }
-
-    try {
       const link = document.createElement("a");
-      link.href = instance.url;
+      link.href = url;
       link.download = "Gemini_Nexatech_Brochure.pdf";
       link.target = "_blank";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+      
+      // Clean up the object URL after a delay
+      setTimeout(() => URL.revokeObjectURL(url), 10000);
     } catch (error) {
-      console.error("Download failed:", error);
-      // Fallback: Open in new tab
-      if (instance.url) window.open(instance.url, "_blank");
+      console.error("❌ [PDF Engine] Error:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -85,16 +77,17 @@ const BrochureFAB = () => {
         {/* Main FAB Circle - Symmetrical with WhatsApp */}
         <motion.button
           onClick={handleDownload}
-          disabled={instance.loading}
-          whileHover={!instance.loading ? { scale: 1.1 } : {}}
-          whileTap={!instance.loading ? { scale: 0.95 } : {}}
+          disabled={isLoading}
+          whileHover={!isLoading ? { scale: 1.1 } : {}}
+          whileTap={!isLoading ? { scale: 0.95 } : {}}
+          aria-label="Download Profile"
           className={`p-2.5 sm:p-4 rounded-full flex items-center justify-center cursor-pointer shadow-lg transition-all duration-300 relative overflow-hidden ${
-            instance.loading
+            isLoading
               ? "bg-gray-800 cursor-wait"
               : "bg-[#fd8e18] hover:bg-[#013299] animate-ripple-orange"
           }`}
         >
-          {instance.loading ? (
+          {isLoading ? (
             <FaSpinner className="text-xl sm:text-2xl text-white animate-spin" />
           ) : (
             <FaFilePdf className="text-xl sm:text-2xl text-white group-hover:scale-110 transition-transform" />

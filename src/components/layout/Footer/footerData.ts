@@ -27,6 +27,8 @@ export const FOOTER_DATA = {
                 { label: "Industries", href: "#industries" },
                 { label: "Video Library", href: "/video-library" },
                 { label: "Blogs", href: "/blogs" },
+                { label: "Privacy Policy", href: "/privacy-policy" },
+                { label: "Terms of Service", href: "/terms-of-service" },
             ]
         },
         {

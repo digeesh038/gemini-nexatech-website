@@ -21,11 +21,13 @@ function App() {
     <HelmetProvider>
       <Router>
         <ScrollToTop />
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[9999] focus:p-4 focus:bg-white focus:text-black">Skip to content</a>
         <BrochureFAB />
         <WhatsAppFAB />
         <div className="min-h-screen">
           <Navbar />
-          <Routes>
+          <main id="main-content">
+            <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services/:id" element={<ServiceDetail />} />
             <Route path="/products/:id" element={<ProductDetail />} />
@@ -35,6 +37,7 @@ function App() {
             <Route path="/video-library" element={<VideoLibraryPage />} />
             <Route path="/blogs" element={<BlogsPage />} />
           </Routes>
+          </main>
           <Footer />
         </div>
       </Router>
