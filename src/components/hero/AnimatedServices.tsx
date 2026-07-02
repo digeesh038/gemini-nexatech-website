@@ -71,27 +71,13 @@ const AnimatedServices = ({ currentIndex }: AnimatedServicesProps) => {
           className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white text-center flex flex-wrap justify-center items-center leading-[1.2] tracking-tight font-inter w-full max-w-[95vw] lg:max-w-7xl mx-auto"
         >
           {words.map((word, wordIndex) => (
-            <span key={wordIndex} className="whitespace-nowrap flex py-1">
-              {word.split("").map((letter, charIndex) => (
-                <motion.span
-                  key={`${currentIndex}-${wordIndex}-${charIndex}`}
-                  variants={letterVariants}
-                  className="inline-block mx-[0.01em]"
-                >
-                  {letter}
-                </motion.span>
-              ))}
-              {/* Add a space after the word unless it's the last word */}
-              {wordIndex !== words.length - 1 && (
-                <motion.span
-                  key={`${currentIndex}-space-${wordIndex}`}
-                  variants={letterVariants}
-                  className="inline-block"
-                >
-                  &nbsp;
-                </motion.span>
-              )}
-            </span>
+            <motion.span
+              key={`${currentIndex}-${wordIndex}`}
+              variants={letterVariants}
+              className="inline-block mx-[0.15em] py-1"
+            >
+              {word}
+            </motion.span>
           ))}
         </motion.div>
       </AnimatePresence>

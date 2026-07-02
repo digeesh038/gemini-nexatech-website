@@ -41,11 +41,11 @@ const Hero = ({ onScheduleCall }: HeroProps) => {
               key={currentIndex}
               src={services[currentIndex].image || heroImage}
               alt={services[currentIndex].title || "Gemini Nexatech Hero Background"}
-              initial={{ opacity: 0, scale: 1.1 }}
+              initial={currentIndex === 0 ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.1 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 1.5, ease: "easeInOut" }}
-              fetchPriority="high"
+              fetchPriority={currentIndex === 0 ? "high" : "auto"}
               className="absolute inset-0 w-full h-full object-cover object-center"
               style={{ originX: "50%", originY: "50%" }}
             />
