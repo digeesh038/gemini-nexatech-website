@@ -40,6 +40,93 @@
   padding: 2em;
 }
 
+/* ── Products: one card list, peek-carousel on mobile → grid on md+ ──────────
+   The mobile carousel and the desktop grid used to be two separate renders
+   toggled with `hidden`, which put every product title and description into
+   the HTML twice. Crawlers read both copies, so the page reported duplicate
+   H3s and duplicate body text. One render + these breakpoint rules keeps the
+   two layouts without duplicating any content. */
+.pd-viewport {
+  overflow: hidden;
+}
+
+.pd-track {
+  display: flex;
+  gap: 0.5rem;
+  width: var(--pd-track-w);
+  transform: translateX(var(--pd-track-x));
+  transition: transform 500ms ease-out;
+}
+
+.pd-item {
+  flex: 0 0 auto;
+  width: 82vw;
+  min-height: 260px;
+}
+
+/* Inactive peek cards dim back; `filter` rather than `box-shadow` so the
+   card's own Tailwind `shadow-2xl` is left alone. */
+.pd-card {
+  border-color: rgb(255 255 255 / 0.05);
+  opacity: 0.6;
+  transform: scale(0.95);
+  transition:
+    opacity 300ms,
+    transform 300ms,
+    border-color 300ms,
+    filter 300ms;
+}
+
+.pd-card[data-active="true"] {
+  border-color: rgb(255 140 0 / 0.4);
+  opacity: 1;
+  transform: scale(1);
+  filter: drop-shadow(0 0 14px rgb(255 140 0 / 0.18));
+}
+
+.pd-underline {
+  width: 0;
+  transition: width 700ms;
+}
+
+.pd-card[data-active="true"] .pd-underline {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .pd-viewport {
+    overflow: visible;
+  }
+
+  .pd-track {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    width: auto;
+    transform: none;
+  }
+
+  .pd-item {
+    width: auto;
+    min-height: 0;
+  }
+
+  .pd-card,
+  .pd-card[data-active="true"] {
+    border-color: rgb(255 255 255 / 0.1);
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .pd-track {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
 .read-the-docs {
   color: #888;
 }

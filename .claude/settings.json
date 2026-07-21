@@ -34,7 +34,19 @@
       "PowerShell($s=\"C:\\\\Users\\\\digee\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--Menem-Inc-gemini-nexatech-website\\\\c002c3ac-6075-49dc-8b3e-c83b9dc6fb8d\\\\scratchpad\"; & node \"$s\\\\shotfooter.mjs\" \"$s\\\\footer2.png\")",
       "Bash(node audit.mjs)",
       "PowerShell($s=\"C:\\\\Users\\\\digee\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--Menem-Inc-gemini-nexatech-website\\\\c002c3ac-6075-49dc-8b3e-c83b9dc6fb8d\\\\scratchpad\"; & node \"$s\\\\drive.mjs\" \"http://localhost:5173/contact\" \"$s\\\\dev-check.png\")",
-      "PowerShell(foreach \\($p in 4173,4174,4180,4181\\) { $c = Get-NetTCPConnection -LocalPort $p -State Listen -ErrorAction SilentlyContinue; if \\($c\\) { Stop-Process -Id $c.OwningProcess -Force -ErrorAction SilentlyContinue; \"stopped listener on $p\" } })"
+      "PowerShell(foreach \\($p in 4173,4174,4180,4181\\) { $c = Get-NetTCPConnection -LocalPort $p -State Listen -ErrorAction SilentlyContinue; if \\($c\\) { Stop-Process -Id $c.OwningProcess -Force -ErrorAction SilentlyContinue; \"stopped listener on $p\" } })",
+      "Bash(git fetch *)",
+      "Bash(git rev-list *)",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit -q -m ' *)",
+      "Bash(git push *)",
+      "Bash(curl -s https://gemini-nexatech-website-nine.vercel.app/)",
+      "Bash(gh auth *)",
+      "Bash(curl -s https://api.github.com/repos/digeesh038/gemini-nexatech-website)",
+      "Bash(curl -s https://api.github.com/repos/digeesh038/gemini-nexatech-website/commits/508ac99edf6a66a46d805b5df5428a7ddd07bf5f/status)",
+      "Bash(node -e \"try{require.resolve\\('playwright'\\);console.log\\('playwright yes'\\)}catch\\(e\\){console.log\\('no playwright'\\)}\")",
+      "Bash(git stash *)"
     ]
   }
 }

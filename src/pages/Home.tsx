@@ -38,6 +38,43 @@ const Home = () => {
 
       <Stats />
 
+      {/* Lead-in copy. The H1 ("Your Digital Partner for …") was previously
+          followed straight into the section grids, so none of its wording
+          appeared in the page body — this restates it in prose and gives the
+          heading-heavy sections below some supporting text. */}
+      <section className="bg-[#000510] px-6 pb-10 lg:pb-16">
+        <div className="max-w-4xl mx-auto text-center space-y-4">
+          <p className="text-gray-300 text-base lg:text-xl leading-relaxed">
+            Gemini Nexatech is <strong className="text-white">your digital partner for</strong>{" "}
+            custom software, intelligent tracking and industrial IoT. For more
+            than 15 years we have helped manufacturing, energy, construction,
+            logistics, aviation and oil &amp; gas teams turn complex operational
+            problems into dependable systems.
+          </p>
+          <p className="text-gray-400 text-sm lg:text-lg leading-relaxed">
+            Every engagement is delivered end to end by our in-house engineering
+            team — discovery and solution design, build and systems integration,
+            deployment across your sites, then long-term application support. The
+            result is technology you can hand to your operators on day one:
+            RFID and RTLS rollouts, GPS and fleet telematics, AI video analytics,
+            connected sensors and the enterprise applications that tie them
+            together.
+          </p>
+          <p className="text-gray-400 text-sm lg:text-lg leading-relaxed">
+            We work as an extension of your team rather than a vendor at arm's
+            length. Projects start with a site walkthrough and a written scope,
+            run in short review cycles you can steer, and finish with training,
+            documentation and a support agreement. Because we build the software
+            and specify the hardware, the two are designed against each other
+            from the start — readers, tags, gateways and sensors are chosen for
+            the environment they will actually live in, whether that is a
+            refinery, a shop floor, a cold store or an airside apron. Our
+            engineering team is based in Chennai and delivers across India, the
+            Gulf and South East Asia.
+          </p>
+        </div>
+      </section>
+
       <SectionDivider direction="right" />
       <section id="services">
         <Services />

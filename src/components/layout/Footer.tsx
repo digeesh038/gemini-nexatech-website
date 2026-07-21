@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import Container from "../common/Container";
+import ShareLinks from "../common/ShareLinks";
 import { useFooterManager } from "./Footer/FooterManager";
 import { useFooterAnimations } from "./Footer/FooterAnimations";
 import { useCallback, useState } from "react";
@@ -218,17 +219,19 @@ const Footer = () => {
                 WHERE IDEAS MEETS INNOVATION
               </span>
             </div>
-            <h2 className="text-3xl font-black text-white leading-tight tracking-tighter">
+            {/* Same copy as the md+ CTA above, which is the one that carries
+                the <h2>. Kept as a <p> here so the outline has it once. */}
+            <p className="text-3xl font-black text-white leading-tight tracking-tighter">
               Ready to build the <br />
               <span className="text-gemini-orange uppercase">
                 Next Big Thing?
               </span>
-            </h2>
+            </p>
             <Link
               to="/contact"
               className="inline-block px-7 py-3 text-sm bg-white text-gemini-blue font-black rounded-xl active:scale-95 shadow-xl uppercase tracking-wider"
             >
-              LET'S WORK TOGETHER
+              START YOUR PROJECT
             </Link>
           </motion.div>
 
@@ -339,9 +342,13 @@ const Footer = () => {
 
         {/* Crawlable sitemap — keeps every detail page one click from any page.
             Without it these routes are only linked from the homepage body. */}
+        <div className="border-t border-white/10 mt-10 pt-8">
+          <ShareLinks />
+        </div>
+
         <nav
           aria-label="Sitemap"
-          className="border-t border-white/10 mt-10 pt-10 pb-28 space-y-6"
+          className="border-t border-white/10 mt-8 pt-10 pb-28 space-y-6"
         >
           {SITEMAP_GROUPS.map(({ heading, basePath, items }) => (
             <div key={heading} className="flex flex-col sm:flex-row gap-2 sm:gap-4">

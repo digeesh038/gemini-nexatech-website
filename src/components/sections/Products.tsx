@@ -5,8 +5,13 @@ import Container from "../common/Container";
 import { useProductsManager } from "./products/ProductsManager";
 import { useProductsAnimations } from "./products/ProductsAnimations";
 
-// ── Mobile peek-carousel card ────────────────────────────────────────────────
-const MobileProductCard = ({
+/**
+ * One card for both breakpoints — a peek-carousel slide under md, a grid tile
+ * at md+. Rendering a separate mobile and desktop card put every title and
+ * description in the HTML twice; the layout switch now lives in App.css
+ * (`.pd-*` rules) instead of in duplicated markup.
+ */
+const ProductCard = ({
   product,
   isActive,
 }: {
@@ -14,65 +19,89 @@ const MobileProductCard = ({
   isActive: boolean;
 }) => (
   <div
-    className={`relative bg-[#00152F]/60 backdrop-blur-xl rounded-[24px] border transition-all duration-300 p-5 flex flex-col shadow-2xl h-full overflow-hidden ${
-      isActive
-        ? "border-[#FF8C00]/40 shadow-[0_0_30px_rgba(255,140,0,0.12)]"
-        : "border-white/5 opacity-60 scale-95"
-    }`}
+    className="product-card group relative h-full md:h-auto md:mb-4"
+    style={{ perspective: "1000px" }}
   >
-    {/* Animated bottom tech bar */}
-    <div className="absolute bottom-0 left-0 w-full h-[2px] rounded-b-[24px] overflow-hidden">
+    <div className="card-inner w-full h-full relative transition-transform duration-500">
       <div
-        className={`h-full bg-gradient-to-r from-[#FF8C00] to-orange-400 transition-all duration-700 ${isActive ? "w-full" : "w-0"}`}
-      />
-    </div>
-
-    {/* Icon + Title */}
-    <div className="flex items-center gap-3 mb-3">
-      <div className="w-10 h-10 rounded-xl bg-[#FF8C00]/10 flex items-center justify-center border border-[#FF8C00]/20 flex-shrink-0">
-        <product.icon className="text-base text-[#FF8C00]" />
-      </div>
-      <h3 className="text-base font-black text-white tracking-tight leading-tight">
-        {product.title}
-      </h3>
-    </div>
-
-    {/* Description */}
-    <p className="text-gray-400 text-[11px] leading-relaxed mb-3 line-clamp-3">
-      {product.desc}
-    </p>
-
-    {/* First 2 chips */}
-    <div className="flex flex-wrap gap-1.5 mb-4">
-      {product.products.slice(0, 2).map((sub: any, i: number) => (
-        <div
-          key={i}
-          className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 flex items-center gap-1.5"
-        >
-          <sub.icon className="text-[10px] text-[#FF8C00] flex-shrink-0" />
-          <span className="text-[10px] font-bold text-white/70 uppercase tracking-wider leading-none">
-            {sub.name}
-          </span>
-        </div>
-      ))}
-      {product.products.length > 2 && (
-        <div className="px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 flex items-center">
-          <span className="text-[10px] font-bold text-white/30 uppercase">
-            +{product.products.length - 2}
-          </span>
-        </div>
-      )}
-    </div>
-
-    {/* Explore button */}
-    <div className="mt-auto">
-      <Link
-        to={`/products/${product.id}`}
-        aria-label={`Explore ${product.title}`}
-        className="flex items-center gap-1.5 bg-[#FF8C00] text-white font-black text-xs py-2 px-4 rounded-xl shadow-lg active:scale-95 transition-transform w-fit"
+        data-active={isActive}
+        className="pd-card relative w-full h-full bg-[#00152F]/60 md:bg-[#00152F]/40 backdrop-blur-xl rounded-[24px] md:rounded-[32px] border p-5 md:p-6 flex flex-col items-start shadow-2xl overflow-hidden"
       >
-        Explore <span>→</span>
-      </Link>
+        {/* Digital blueprint overlay — desktop only */}
+        <div className="hidden md:block absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none">
+          <div className="absolute inset-0 bg-tech-blueprint opacity-50" />
+        </div>
+
+        {/* Mouse glow — desktop only */}
+        <div className="card-glow hidden md:block absolute w-[100px] h-[100px] bg-white/20 blur-[60px] rounded-full opacity-0 pointer-events-none" />
+
+        {/* Icon + title. Inline row on mobile, centred overlay at md+. */}
+        <div className="flex items-center gap-3 md:gap-0 w-full mb-3 md:mb-6 relative md:h-12">
+          <div className="relative z-10">
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-[#FF8C00]/10 md:bg-white/5 flex items-center justify-center border border-[#FF8C00]/20 md:border-white/10 md:group-hover:border-[#FF8C00]/50 transition-colors duration-500 flex-shrink-0">
+              <product.icon className="text-base md:text-xl text-[#FF8C00]" />
+            </div>
+            <div className="hidden md:block absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-[#FF8C00]/30" />
+          </div>
+
+          <h3 className="text-base md:text-xl lg:text-2xl font-black text-white tracking-tight leading-tight md:leading-none md:absolute md:inset-0 md:flex md:items-center md:justify-center md:text-center md:pointer-events-none md:group-hover:text-[#FF8C00] md:transition-colors">
+            {product.title}
+          </h3>
+        </div>
+
+        <p className="text-gray-400 text-[11px] md:text-[16px] leading-relaxed mb-3 md:mb-6 line-clamp-3 md:line-clamp-none text-left w-full">
+          {product.desc}
+        </p>
+
+        {/* Sub-product chips. Mobile shows the first two plus a "+N" badge;
+            md+ shows the full set. */}
+        <div className="w-full mb-4">
+          <div className="flex flex-wrap gap-1.5 md:gap-2">
+            {product.products.map((sub: any, i: number) => (
+              <div
+                key={i}
+                className={`${
+                  i > 1 ? "hidden md:flex" : "flex"
+                } px-3 py-1.5 md:px-4 md:py-2 rounded-lg bg-white/5 border border-white/10 items-center gap-1.5 md:gap-2 group/chip md:hover:bg-[#FF8C00]/10 md:hover:border-[#FF8C00]/30 transition-all cursor-default`}
+              >
+                <sub.icon className="text-[10px] md:text-[11px] text-[#FF8C00] flex-shrink-0" />
+                <span className="text-[10px] md:text-[11px] font-bold text-white/70 group-hover/chip:text-white uppercase tracking-wider whitespace-normal leading-tight md:leading-tight text-left">
+                  {sub.name}
+                </span>
+              </div>
+            ))}
+            {product.products.length > 2 && (
+              <div className="md:hidden px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/10 flex items-center">
+                <span className="text-[10px] font-bold text-white/30 uppercase">
+                  +{product.products.length - 2}
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Mobile progress underline */}
+        <div className="md:hidden absolute bottom-0 left-0 w-full h-[2px] rounded-b-[24px] overflow-hidden">
+          <div className="pd-underline h-full bg-gradient-to-r from-[#FF8C00] to-orange-400" />
+        </div>
+
+        {/* Desktop bottom tech bar */}
+        <div className="hidden md:block absolute bottom-0 left-0 w-full h-1 bg-[#FF8C00]/10 overflow-hidden">
+          <div className="w-1/3 h-full bg-[#FF8C00] translate-x-[-100%] group-hover:translate-x-[300%] transition-transform duration-1000 ease-in-out shadow-[0_0_10px_#FF8C00]" />
+        </div>
+
+        {/* A single link per card: an inline pill on mobile, a full-card hover
+            overlay at md+. One <a> keeps each anchor text unique per product. */}
+        <Link
+          to={`/products/${product.id}`}
+          className="mt-auto flex items-center gap-1.5 bg-[#FF8C00] text-white font-black text-xs py-2 px-4 rounded-xl shadow-lg active:scale-95 transition-transform w-fit
+            md:mt-0 md:w-auto md:absolute md:inset-0 md:z-20 md:justify-center md:gap-0 md:bg-[#00152F]/90 md:p-0 md:rounded-[32px] md:shadow-none md:backdrop-blur-md md:opacity-0 md:invisible md:group-hover:opacity-100 md:group-hover:visible md:transition-all md:duration-300"
+        >
+          <span className="flex items-center gap-2 md:bg-white md:text-gemini-blue md:font-black md:py-3 md:px-8 md:rounded-xl md:translate-y-4 md:group-hover:translate-y-0 md:transition-all md:duration-300 md:shadow-xl md:whitespace-nowrap">
+            Explore {product.title} <span className="text-lg md:text-xl">→</span>
+          </span>
+        </Link>
+      </div>
     </div>
   </div>
 );
@@ -155,11 +184,10 @@ const Products = () => {
           </p>
         </div>
 
-        {/* ── MOBILE: peek carousel ── */}
-        <div className="md:hidden relative z-10">
-          {/* Drag / swipe area */}
+        <div className="relative z-10">
+          {/* Swipe area (mobile) / plain wrapper (md+) */}
           <div
-            className="relative overflow-hidden"
+            className="pd-viewport relative"
             onTouchStart={(e) => {
               setIsPaused(true);
               setDragStartX(e.touches[0].clientX);
@@ -171,31 +199,27 @@ const Products = () => {
               setTimeout(() => setIsPaused(false), 800);
             }}
           >
-            {/* Peek track: card = 82vw + 8px gap; offset so active card is centred with 9vw peek on left */}
+            {/* Peek track: card = 82vw + 8px gap; offset so the active card is
+                centred with a 9vw peek on the left. Becomes a grid at md+. */}
             <div
-              className="flex gap-2 transition-transform duration-500 ease-out"
-              style={{
-                width: `${products.length * 82}vw`,
-                transform: `translateX(calc(9vw - ${activeIdx * 82}vw - ${activeIdx * 8}px))`,
-              }}
+              className="pd-track"
+              style={
+                {
+                  "--pd-track-w": `${products.length * 82}vw`,
+                  "--pd-track-x": `calc(9vw - ${activeIdx * 82}vw - ${activeIdx * 8}px)`,
+                } as React.CSSProperties
+              }
             >
               {products.map((product: any, idx: number) => (
-                <div
-                  key={product.id}
-                  className="flex-shrink-0"
-                  style={{ width: "82vw", minHeight: "260px" }}
-                >
-                  <MobileProductCard
-                    product={product}
-                    isActive={idx === activeIdx}
-                  />
+                <div key={product.id} className="pd-item">
+                  <ProductCard product={product} isActive={idx === activeIdx} />
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Dots + counter */}
-          <div className="flex items-center justify-center gap-1.5 mt-5">
+          {/* Dots + counter — mobile only */}
+          <div className="md:hidden flex items-center justify-center gap-1.5 mt-5">
             {products.map((_: any, idx: number) => (
               <button
                 key={idx}
@@ -203,20 +227,20 @@ const Products = () => {
                 aria-label={`Go to slide ${idx + 1}`}
                 className="w-12 h-12 flex items-center justify-center rounded-full transition-all duration-300"
               >
-                <span 
+                <span
                   className={`rounded-full transition-all duration-300 ${
                     idx === activeIdx
                       ? "w-10 h-3 bg-[#FF8C00]"
                       : "w-3 h-3 bg-white/20"
-                  }`} 
+                  }`}
                 />
               </button>
             ))}
           </div>
 
-          {/* Progress bar — only show when auto-play is running (not on last card) */}
+          {/* Progress bar — only while auto-play is running (not on last card) */}
           {activeIdx < products.length - 1 && (
-            <div className="mx-auto mt-3 w-40 h-[2px] bg-white/10 rounded-full overflow-hidden">
+            <div className="md:hidden mx-auto mt-3 w-40 h-[2px] bg-white/10 rounded-full overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIdx}
@@ -228,83 +252,6 @@ const Products = () => {
               </AnimatePresence>
             </div>
           )}
-        </div>
-
-        {/* ── DESKTOP: original grid (md+) ── */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 relative z-10">
-          {products.map((product: any) => (
-            <div
-              key={product.id}
-              className="product-card group relative h-auto mb-4"
-              style={{ perspective: "1000px" }}
-            >
-              <div className="card-inner w-full h-full relative transition-transform duration-500">
-                {/* Main Card Face */}
-                <div className="relative w-full h-full bg-[#00152F]/40 backdrop-blur-xl rounded-[32px] border border-white/10 p-6 flex flex-col items-start shadow-2xl overflow-hidden">
-                  {/* Digital Blueprint Overlay */}
-                  <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none">
-                    <div className="absolute inset-0 bg-tech-blueprint opacity-50" />
-                  </div>
-
-                  {/* Mouse Glow */}
-                  <div className="card-glow absolute w-[100px] h-[100px] bg-white/20 blur-[60px] rounded-full opacity-0 pointer-events-none" />
-
-                  {/* Icon & Title Row */}
-                  <div className="flex items-center w-full mb-6 relative h-12">
-                    <div className="relative z-10">
-                      <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-[#FF8C00]/50 transition-colors duration-500">
-                        <product.icon className="text-xl text-[#FF8C00]" />
-                      </div>
-                      <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-[#FF8C00]/30" />
-                    </div>
-
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <h3 className="text-xl lg:text-2xl font-black text-white tracking-tight group-hover:text-[#FF8C00] transition-colors leading-none text-center">
-                        {product.title}
-                      </h3>
-                    </div>
-                  </div>
-
-                  <p className="text-gray-400 text-[16px] leading-relaxed mb-6 text-left w-full">
-                    {product.desc}
-                  </p>
-
-                  {/* Desktop: show all chips */}
-                  <div className="w-full mb-4">
-                    <div className="flex flex-wrap gap-2">
-                      {product.products.map((sub: any, i: number) => (
-                        <div
-                          key={i}
-                          className="px-4 py-2 rounded-lg bg-white/5 border border-white/10 flex items-center gap-2 group/chip hover:bg-[#FF8C00]/10 hover:border-[#FF8C00]/30 transition-all cursor-default"
-                        >
-                          <sub.icon className="text-[11px] flex-shrink-0 text-[#FF8C00]" />
-                          <span className="text-[11px] font-bold text-white/70 group-hover/chip:text-white uppercase tracking-wider whitespace-normal leading-tight text-left">
-                            {sub.name}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Bottom Tech Bar */}
-                  <div className="absolute bottom-0 left-0 w-full h-1 bg-[#FF8C00]/10 overflow-hidden">
-                    <div className="w-1/3 h-full bg-[#FF8C00] translate-x-[-100%] group-hover:translate-x-[300%] transition-transform duration-1000 ease-in-out shadow-[0_0_10px_#FF8C00]" />
-                  </div>
-
-                  {/* Desktop hover overlay */}
-                  <Link
-                    to={`/products/${product.id}`}
-                    aria-label={`Explore ${product.title}`}
-                    className="hidden md:flex absolute inset-0 z-20 items-center justify-center bg-[#00152F]/90 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 backdrop-blur-md rounded-[32px]"
-                  >
-                    <span className="bg-white text-gemini-blue font-black py-3 px-8 rounded-xl transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl flex items-center gap-2 whitespace-nowrap">
-                      EXPLORE {product.title} <span className="text-xl">→</span>
-                    </span>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
       </Container>
     </section>

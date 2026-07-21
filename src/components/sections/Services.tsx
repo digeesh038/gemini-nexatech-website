@@ -289,9 +289,11 @@ const Services = () => {
                     <div className="w-11 h-11 lg:w-12 lg:h-12 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-white/20 shadow-xl flex-shrink-0">
                       <activeService.icon className="text-xl lg:text-2xl text-[#FF8C00]" />
                     </div>
-                    <h2 className="text-xl lg:text-2xl xl:text-3xl font-black text-white leading-tight drop-shadow-lg">
+                    {/* h3, not h2 — this sits under the "Smart Tech Solutions"
+                        section heading, and the mobile branch already uses h3. */}
+                    <h3 className="text-xl lg:text-2xl xl:text-3xl font-black text-white leading-tight drop-shadow-lg">
                       {activeService.title}
-                    </h2>
+                    </h3>
                   </div>
 
                   <p className="text-gray-300 text-sm lg:text-base mb-4 leading-relaxed max-w-xl opacity-90">

@@ -1,5 +1,4 @@
-import { FaLinkedin, FaTwitter, FaGithub, FaInstagram, FaPhone, FaEnvelope, FaMapMarkerAlt, FaWhatsapp } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa6";
+import { FaLinkedin, FaPhone, FaEnvelope, FaMapMarkerAlt, FaWhatsapp } from "react-icons/fa";
 
 export const FOOTER_DATA = {
     about: {
@@ -42,11 +41,13 @@ export const FOOTER_DATA = {
             ]
         }
     ],
+    // Only profiles with a real URL are listed. The Twitter/GitHub/YouTube/
+    // Instagram entries used to be href="#", which rendered as dead links and
+    // told search engines the brand had no social presence. Add each one back
+    // here as soon as its live profile URL is known — Footer.tsx renders
+    // whatever is in this array, and schema.ts should get the same URLs so
+    // the Organization `sameAs` list stays in sync.
     socials: [
-        { icon: FaLinkedin, href: "#", label: "LinkedIn", color: "#0A66C2" },
-        { icon: FaTwitter, href: "#", label: "Twitter", color: "#1DA1F2" },
-        { icon: FaGithub, href: "#", label: "GitHub", color: "#ffffff" },
-        { icon: FaYoutube, href: "#", label: "Youtube", color: "#FF0000" },
-        { icon: FaInstagram, href: "#", label: "Instagram", color: "#E4405F" }
+        { icon: FaLinkedin, href: "https://in.linkedin.com/company/gemini-nexatech-5747153b3", label: "LinkedIn", color: "#0A66C2" },
     ]
 };

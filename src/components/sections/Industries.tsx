@@ -68,18 +68,27 @@ const Industries = () => {
 
             {/* Content Area */}
             <div className="relative z-10 w-full h-full flex flex-col lg:items-center justify-center p-6 lg:p-10 pointer-events-none">
-              {/* Vertical Pillar Title (Desktop Only) centered for safety */}
+              {/* Vertical pillar label (desktop) and the mobile row label are
+                  both short restatements of the heading below — plain spans,
+                  so each industry contributes exactly one <h3> to the outline
+                  instead of three near-identical ones. */}
               <div className="pillar-title hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap -rotate-90">
-                <h3 className="text-3xl lg:text-4xl font-black text-white/20 uppercase tracking-[0.3em] group-hover:opacity-0 transition-opacity duration-300">
+                <span
+                  aria-hidden="true"
+                  className="block text-3xl lg:text-4xl font-black text-white/20 uppercase tracking-[0.3em] group-hover:opacity-0 transition-opacity duration-300"
+                >
                   {industry.shortTitle}
-                </h3>
+                </span>
               </div>
 
               {/* Mobile Title Area */}
               <div className="lg:hidden flex items-center justify-between w-full">
-                <h3 className="text-base lg:text-3xl font-black text-white uppercase tracking-wider group-hover:text-[#FF8C00] transition-colors">
+                <span
+                  aria-hidden="true"
+                  className="text-base lg:text-3xl font-black text-white uppercase tracking-wider group-hover:text-[#FF8C00] transition-colors"
+                >
                   {industry.shortTitle}
-                </h3>
+                </span>
                 <industry.icon className="text-xl lg:text-4xl text-[#FF8C00] group-hover:scale-110 transition-transform" />
               </div>
 
@@ -98,7 +107,7 @@ const Industries = () => {
                   to={`/industries/${industry.id}`}
                   className="px-6 py-2.5 bg-white text-black font-bold rounded-xl text-sm hover:bg-[#FF8C00] hover:text-white transition-all transform active:scale-95 inline-block pointer-events-auto"
                 >
-                  View Solution
+                  {`View ${industry.shortTitle} Solutions`}
                 </Link>
               </div>
             </div>

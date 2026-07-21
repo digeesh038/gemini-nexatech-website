@@ -1,10 +1,24 @@
+import { useSyncExternalStore } from "react";
 import { motion } from "framer-motion";
 import { CASE_STUDIES } from "./casestudies/caseStudiesData";
 import Container from "../common/Container";
 
+/** false while server-rendering and during hydration, true afterwards. */
+const noopSubscribe = () => () => {};
+const useIsHydrated = () =>
+  useSyncExternalStore(
+    noopSubscribe,
+    () => true,
+    () => false,
+  );
+
 const CaseStudies = () => {
-  // Duplicate the array for a seamless infinite loop
-  const duplicatedStudies = [...CASE_STUDIES, ...CASE_STUDIES];
+  // The marquee needs a second copy of the list so the -50% loop wraps
+  // seamlessly, but that copy is purely visual — shipping it in the
+  // prerendered HTML put every case-study title and description in the
+  // document twice. Mount it after hydration and hide it from a11y tools, so
+  // crawlers only ever see one copy of the text.
+  const showClone = useIsHydrated();
 
   return (
     <section
@@ -40,16 +54,21 @@ const CaseStudies = () => {
       <div className="relative flex overflow-hidden group">
         <motion.div
           className="flex whitespace-nowrap"
-          animate={{ x: ["0%", "-50%"] }}
+          animate={showClone ? { x: ["0%", "-50%"] } : undefined}
           transition={{
             duration: 40,
             repeat: Infinity,
             ease: "linear",
           }}
         >
-          {duplicatedStudies.map((study, index) => (
+          {(showClone ? [...CASE_STUDIES, ...CASE_STUDIES] : CASE_STUDIES).map((study, index) => {
+            const isClone = index >= CASE_STUDIES.length;
+            // The visual clone must not repeat the heading in the outline.
+            const Title = isClone ? "div" : "h3";
+            return (
             <div
               key={`${study.id}-${index}`}
+              aria-hidden={isClone || undefined}
               className="inline-block w-[280px] sm:w-[450px] mx-3 whitespace-normal"
             >
               <div className="h-full bg-[#00152F]/40 backdrop-blur-md rounded-[24px] border border-white/10 p-5 lg:p-8 hover:border-[#0047AB]/50 transition-all duration-500 hover:bg-[#00152F]/60 group/card relative overflow-hidden flex flex-col">
@@ -78,9 +97,9 @@ const CaseStudies = () => {
                   <span className="text-white/60 text-[10px] uppercase font-bold tracking-[0.2em] mb-1 block">
                     Client: {study.client}
                   </span>
-                  <h3 className="text-base lg:text-xl font-bold text-white group-hover/card:text-[#0047AB] transition-colors">
+                  <Title className="text-base lg:text-xl font-bold text-white group-hover/card:text-[#0047AB] transition-colors">
                     {study.title}
-                  </h3>
+                  </Title>
                 </div>
 
                 <p className="text-gray-400 text-xs lg:text-sm leading-relaxed mb-4 lg:mb-6">
@@ -92,7 +111,8 @@ const CaseStudies = () => {
                 </div>
               </div>
             </div>
-          ))}
+            );
+          })}
         </motion.div>
       </div>
 
