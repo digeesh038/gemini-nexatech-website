@@ -182,6 +182,14 @@ const Products = () => {
             Cutting-edge intelligent technologies designed to enhance
             visibility, automation and operational efficiency across industries.
           </p>
+          <p className="text-gray-500 text-xs lg:text-base max-w-3xl mx-auto leading-relaxed mt-3">
+            Every deployment is specified against the site it will actually run
+            in — reader placement, tag material, network coverage and power are
+            worked out before a single unit ships. The platforms below share a
+            common data layer, so a tag read on the shop floor and a vehicle
+            position out on the road surface in the same view rather than in two
+            systems nobody reconciles.
+          </p>
         </div>
 
         <div className="relative z-10">

@@ -69,8 +69,18 @@ const Home = () => {
             from the start — readers, tags, gateways and sensors are chosen for
             the environment they will actually live in, whether that is a
             refinery, a shop floor, a cold store or an airside apron. Our
-            engineering team is based in Chennai and delivers across India, the
-            Gulf and South East Asia.
+            engineering team is based in Chennai and supports deployments
+            wherever your sites are.
+          </p>
+          <p className="text-gray-400 text-sm lg:text-lg leading-relaxed">
+            Engagements are sized to the problem rather than to a fixed package.
+            That might be a short discovery to prove a tracking concept on one
+            line before committing capital, a full build and rollout across
+            multiple sites, or taking over an existing system that has outgrown
+            whoever first installed it. Where you already run an ERP, MES or
+            maintenance platform, we integrate with it instead of asking you to
+            replace it — the aim is one source of truth, not another dashboard
+            your team has to remember to open.
           </p>
         </div>
       </section>

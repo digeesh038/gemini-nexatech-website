@@ -137,10 +137,17 @@ const Footer = () => {
                     : "lg:col-span-4"
               } space-y-2 items-start text-left`}
             >
-              <h3 className="text-white font-black uppercase tracking-widest text-sm border-l-4 border-gemini-orange pl-4 w-full">
+              {/* A label for a group of footer links, not a section of the
+                  document — kept out of the heading outline and tied to its
+                  list with aria-labelledby so screen readers still announce
+                  the grouping. The mobile accordion already uses a <span>. */}
+              <p
+                id={`footer-group-${idx}`}
+                className="text-white font-black uppercase tracking-widest text-sm border-l-4 border-gemini-orange pl-4 w-full"
+              >
                 {section.title}
-              </h3>
-              <ul className="space-y-2 pt-2">
+              </p>
+              <ul aria-labelledby={`footer-group-${idx}`} className="space-y-2 pt-2">
                 {section.links?.map((link, lIdx) => (
                   <li key={lIdx} className="list-none">
                     <FooterLink
@@ -352,10 +359,16 @@ const Footer = () => {
         >
           {SITEMAP_GROUPS.map(({ heading, basePath, items }) => (
             <div key={heading} className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-              <h3 className="text-white/60 font-black uppercase tracking-widest text-xs shrink-0 sm:w-28 pt-1">
+              <p
+                id={`sitemap-${heading}`}
+                className="text-white/60 font-black uppercase tracking-widest text-xs shrink-0 sm:w-28 pt-1"
+              >
                 {heading}
-              </h3>
-              <ul className="flex flex-wrap gap-x-5 gap-y-2">
+              </p>
+              <ul
+                aria-labelledby={`sitemap-${heading}`}
+                className="flex flex-wrap gap-x-5 gap-y-2"
+              >
                 {items.map((item) => (
                   <li key={item.id} className="list-none">
                     <Link

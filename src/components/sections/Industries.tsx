@@ -39,6 +39,14 @@ const Industries = () => {
               across industries, protecting people, assets, and operations
               worldwide.
             </p>
+            <p className="text-gray-500 text-xs lg:text-base max-w-2xl mx-auto leading-relaxed mt-3">
+              Each sector carries its own constraints — hazardous-area ratings
+              in oil and gas, wash-down tolerance on a production line, airside
+              clearance in aviation, chain-of-custody records in logistics. We
+              select hardware rated for those conditions and shape the software
+              around the way your crews already work, rather than asking them to
+              change an established process to suit the tool.
+            </p>
           </div>
         </Container>
       </div>

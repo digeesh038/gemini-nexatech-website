@@ -47,6 +47,14 @@ const CaseStudies = () => {
             See how Gemini Nexatech is transforming operations for global
             industries.
           </p>
+          <p className="text-gray-500 text-xs lg:text-base max-w-2xl mx-auto leading-relaxed mt-3">
+            The projects below span asset integrity, fleet telematics, cargo
+            handling and emergency evacuation. Each began as one specific
+            operational problem — unplanned downtime, stock that could not be
+            accounted for, muster times nobody could evidence — and each is
+            measured against the number that mattered to the client rather than
+            against how much technology was installed.
+          </p>
         </div>
       </Container>
 
