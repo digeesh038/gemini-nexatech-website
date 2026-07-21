@@ -92,4 +92,7 @@ if (failures) {
   process.exit(1);
 }
 
+// The SSR bundle is a build-time artifact — drop it so it isn't published.
+fs.rmSync(path.join(dist, "server"), { recursive: true, force: true });
+
 console.log(`  prerendered ${allRoutes.length} routes\n`);
