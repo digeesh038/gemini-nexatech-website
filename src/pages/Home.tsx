@@ -28,9 +28,9 @@ const Home = () => {
 
   return (
     <main>
-      <SEO 
-        title="Home"
-        description="Welcome to Gemini Nexatech - Where Ideas Meet Innovation. We provide cutting-edge engineering and digital solutions."
+      <SEO
+        title="Gemini Nexatech - Where Ideas Meet Innovation"
+        description="Gemini Nexatech is a leading provider of innovative digital solutions, specialized engineering, and technical consultancy services. Transforming ideas into reality."
       />
       <div className="relative">
         <Hero onScheduleCall={() => setIsModalOpen(true)} />

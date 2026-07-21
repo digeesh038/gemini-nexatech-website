@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -p \"require\\('./node_modules/react-helmet-async/package.json'\\).version\")",
+      "Bash(node -e \"import\\('react-helmet-async'\\).then\\(m=>console.log\\(Object.keys\\(m\\).join\\(', '\\)\\)\\)\")",
+      "Bash(node -p \"require\\('./node_modules/react-router-dom/package.json'\\).version\")",
+      "Bash(node -e \"import\\('react-router'\\).then\\(m=>console.log\\('react-router has StaticRouter:', 'StaticRouter' in m\\)\\)\")",
+      "Bash(node -e \"import\\('react-router-dom/server'\\).then\\(m=>console.log\\('rrd/server has StaticRouter:', 'StaticRouter' in m\\)\\).catch\\(e=>console.log\\('rrd/server MISSING'\\)\\)\")",
+      "PowerShell($s=\"C:\\\\Users\\\\digee\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--Menem-Inc-gemini-nexatech-website\\\\c002c3ac-6075-49dc-8b3e-c83b9dc6fb8d\\\\scratchpad\"; & node \"$s\\\\checkld.mjs\" \"d:\\\\Menem Inc\\\\gemini-nexatech-website\\\\dist\")",
+      "PowerShell(npm run preview 2>&1)",
+      "Bash(break)",
+      "PowerShell($s=\"C:\\\\Users\\\\digee\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--Menem-Inc-gemini-nexatech-website\\\\c002c3ac-6075-49dc-8b3e-c83b9dc6fb8d\\\\scratchpad\"; & node \"$s\\\\hydrate.mjs\")",
+      "Bash(npx vite *)",
+      "Bash(PRERENDER_DIST=dist-dev node scripts/prerender.js)",
+      "Bash(curl -s -o /dev/null -w \"preview dist-dev: %{http_code}\\\\n\" http://localhost:4174/contact)",
+      "PowerShell($s=\"C:\\\\Users\\\\digee\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--Menem-Inc-gemini-nexatech-website\\\\c002c3ac-6075-49dc-8b3e-c83b9dc6fb8d\\\\scratchpad\"; & node \"$s\\\\diag.mjs\")",
+      "Bash(sed -i \"s|if \\(/hydrat.*{|{|\" diag.mjs)",
+      "Bash(node diag.mjs)",
+      "PowerShell($s=\"C:\\\\Users\\\\digee\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--Menem-Inc-gemini-nexatech-website\\\\c002c3ac-6075-49dc-8b3e-c83b9dc6fb8d\\\\scratchpad\"; & node \"$s\\\\diff.mjs\" \"/contact\")",
+      "Bash(sed -i 's|await p1.evaluate\\(SKELETON\\)|await p1.evaluate\\(`\\(${SKELETON}\\)\\(\\)`\\)|; s|await p2.evaluate\\(SKELETON\\)|await p2.evaluate\\(`\\(${SKELETON}\\)\\(\\)`\\)|' diff.mjs)",
+      "Bash(node diff.mjs /contact)",
+      "Bash(python -c ' *)",
+      "PowerShell($s=\"C:\\\\Users\\\\digee\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--Menem-Inc-gemini-nexatech-website\\\\c002c3ac-6075-49dc-8b3e-c83b9dc6fb8d\\\\scratchpad\"; & node \"$s\\\\where.mjs\" \"d:\\\\Menem Inc\\\\gemini-nexatech-website\\\\dist\\\\contact\\\\index.html\")",
+      "Bash(node -e ' *)",
+      "PowerShell($s=\"C:\\\\Users\\\\digee\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--Menem-Inc-gemini-nexatech-website\\\\c002c3ac-6075-49dc-8b3e-c83b9dc6fb8d\\\\scratchpad\"; $d=\"d:\\\\Menem Inc\\\\gemini-nexatech-website\\\\dist\"; foreach \\($p in @\\(\"contact\\\\index.html\",\"index.html\",\"products\\\\gps-fleet\\\\index.html\"\\)\\) { & node \"$s\\\\where.mjs\" \"$d\\\\$p\" })",
+      "Bash(curl -s http://localhost:4173/contact)",
+      "Bash(sed -i \"s|http://localhost:4173|http://localhost:4180|\" hydrate.mjs)",
+      "Bash(node hydrate.mjs)",
+      "Bash(sed -i \"s|file = path.join\\(root, 'index.html'\\); status = 404;|file = path.join\\(root, '404.html'\\); status = 404;|\" serve.mjs)",
+      "Bash(node serve.mjs \"d:/Menem Inc/gemini-nexatech-website/dist\" 4181)",
+      "Bash(curl -s -o /dev/null -w \"unknown route: %{http_code}\\\\n\" http://localhost:4181/nope)",
+      "Bash(curl -s http://localhost:4181/nope)",
+      "PowerShell($s=\"C:\\\\Users\\\\digee\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--Menem-Inc-gemini-nexatech-website\\\\c002c3ac-6075-49dc-8b3e-c83b9dc6fb8d\\\\scratchpad\"; & node \"$s\\\\shotfooter.mjs\" \"$s\\\\footer.png\")",
+      "PowerShell($s=\"C:\\\\Users\\\\digee\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--Menem-Inc-gemini-nexatech-website\\\\c002c3ac-6075-49dc-8b3e-c83b9dc6fb8d\\\\scratchpad\"; & node \"$s\\\\shotfooter.mjs\" \"$s\\\\footer2.png\")",
+      "Bash(node audit.mjs)",
+      "PowerShell($s=\"C:\\\\Users\\\\digee\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--Menem-Inc-gemini-nexatech-website\\\\c002c3ac-6075-49dc-8b3e-c83b9dc6fb8d\\\\scratchpad\"; & node \"$s\\\\drive.mjs\" \"http://localhost:5173/contact\" \"$s\\\\dev-check.png\")",
+      "PowerShell(foreach \\($p in 4173,4174,4180,4181\\) { $c = Get-NetTCPConnection -LocalPort $p -State Listen -ErrorAction SilentlyContinue; if \\($c\\) { Stop-Process -Id $c.OwningProcess -Force -ErrorAction SilentlyContinue; \"stopped listener on $p\" } })"
+    ]
+  }
+}

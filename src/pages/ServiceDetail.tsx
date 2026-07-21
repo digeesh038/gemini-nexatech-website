@@ -5,6 +5,7 @@ import { FaArrowLeft, FaCheck } from "react-icons/fa";
 import Container from "../components/common/Container";
 import { useEffect, useState } from "react";
 import SEO from "../components/common/SEO";
+import { serviceSchema, breadcrumbSchema } from "../seo/schema";
 
 /* ─────────────────────────────────────────────
    AccordionImages — Industries-style expand panels
@@ -98,9 +99,21 @@ const ServiceDetail = () => {
 
   return (
     <div className="bg-[#000510] min-h-screen pt-20 lg:pt-24 pb-16 relative overflow-hidden font-inter">
-      <SEO 
+      <SEO
         title={`${service.title} Service`}
         description={service.description}
+        jsonLd={[
+          serviceSchema({
+            title: service.title,
+            description: service.description,
+            path: `/services/${service.id}`,
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Services", path: "/#services" },
+            { name: service.title, path: `/services/${service.id}` },
+          ]),
+        ]}
       />
       {/* Dynamic Aura Background */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-gemini-blue/5 blur-[120px] rounded-full pointer-events-none" />

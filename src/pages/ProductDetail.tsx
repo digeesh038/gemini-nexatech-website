@@ -10,6 +10,7 @@ import {
 import Container from "../components/common/Container";
 import { useEffect } from "react";
 import SEO from "../components/common/SEO";
+import { productSchema, breadcrumbSchema } from "../seo/schema";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -32,9 +33,21 @@ const ProductDetail = () => {
 
   return (
     <div className="bg-[#000510] min-h-screen pt-20 lg:pt-28 pb-16">
-      <SEO 
+      <SEO
         title={`${product.title} - Products`}
         description={product.description}
+        jsonLd={[
+          productSchema({
+            title: product.title,
+            description: product.description,
+            path: `/products/${product.id}`,
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Products", path: "/#products" },
+            { name: product.title, path: `/products/${product.id}` },
+          ]),
+        ]}
       />
       <Container className="relative z-10 w-full">
         {/* Header Row: Return Home + Product Title */}

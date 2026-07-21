@@ -5,6 +5,7 @@ import { FaArrowLeft, FaIndustry, FaLightbulb, FaCheck } from "react-icons/fa";
 import Container from "../components/common/Container";
 import { useEffect } from "react";
 import SEO from "../components/common/SEO";
+import { industrySchema, breadcrumbSchema } from "../seo/schema";
 
 const IndustryDetail = () => {
   const { id } = useParams();
@@ -27,9 +28,21 @@ const IndustryDetail = () => {
 
   return (
     <div className="bg-[#000510] min-h-screen pt-20 lg:pt-28 pb-16">
-      <SEO 
+      <SEO
         title={`${industry.title} Industry`}
         description={industry.description}
+        jsonLd={[
+          industrySchema({
+            title: industry.title,
+            description: industry.description,
+            path: `/industries/${industry.id}`,
+          }),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Industries", path: "/#industries" },
+            { name: industry.title, path: `/industries/${industry.id}` },
+          ]),
+        ]}
       />
       <Container className="relative z-10 w-full">
         {/* Header Row: Return Home + Industry Title */}

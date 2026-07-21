@@ -55,13 +55,15 @@
   <link rel="llms-txt" href="/llms.txt" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
   
-  <!-- Primary Meta Tags -->
-  <link rel="canonical" href="https://gemininexatech.com/" />
-  <title>Gemini Nexatech - Where Ideas Meet Innovation</title>
-  <meta name="title" content="Gemini Nexatech - Where Ideas Meet Innovation" />
-  <meta name="description" content="Gemini Nexatech is a leading provider of innovative digital solutions, specialized engineering, and technical consultancy services. Transforming ideas into reality." />
-  <meta name="keywords" content="Gemini Nexatech, engineering, innovation, digital solutions, technical consultancy, tech services" />
   <meta name="author" content="Gemini Nexatech" />
+
+  <!--
+    Primary meta tags (title, description, keywords, canonical, Open Graph,
+    Twitter, page-level JSON-LD) are owned per-route by src/components/common/SEO.tsx
+    and injected here at build time by scripts/prerender.js. Do not add static
+    copies below — they would duplicate the per-route tags.
+  -->
+  <!--app-head-->
 
   <!-- Google Search Console Verification -->
   <meta name="google-site-verification" content="K91ZsCUTTd26d8pWyFcYVAhla_VNJJ1PJpN1wqD8hzE" />
@@ -93,19 +95,6 @@
     }
   </script>
 
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://gemininexatech.com/" />
-  <meta property="og:title" content="Gemini Nexatech - Where Ideas Meet Innovation" />
-  <meta property="og:description" content="Gemini Nexatech is a leading provider of innovative digital solutions, specialized engineering, and technical consultancy services." />
-  <meta property="og:image" content="/og-image.png" />
-
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://gemininexatech.com/" />
-  <meta property="twitter:title" content="Gemini Nexatech - Where Ideas Meet Innovation" />
-  <meta property="twitter:description" content="Gemini Nexatech is a leading provider of innovative digital solutions, specialized engineering, and technical consultancy services." />
-  <meta property="twitter:image" content="/og-image.png" />
 </head>
 
 <body>
@@ -113,7 +102,7 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZHF8MQ4"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <div id="root"></div>
+  <div id="root"><!--app-html--></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 

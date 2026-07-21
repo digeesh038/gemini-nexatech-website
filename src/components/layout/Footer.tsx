@@ -4,6 +4,38 @@ import Container from "../common/Container";
 import { useFooterManager } from "./Footer/FooterManager";
 import { useFooterAnimations } from "./Footer/FooterAnimations";
 import { useCallback, useState } from "react";
+import { services, products, industries } from "../../data/websiteData";
+
+const SITEMAP_GROUPS = [
+  { heading: "Services", basePath: "/services", items: services },
+  { heading: "Products", basePath: "/products", items: products },
+  { heading: "Industries", basePath: "/industries", items: industries },
+];
+
+/**
+ * Renders a real <a href> for route links so crawlers can follow them, and
+ * falls back to a button for in-page "#section" scroll targets.
+ */
+const FooterLink = ({
+  href,
+  className,
+  onHashClick,
+  children,
+}: {
+  href: string;
+  className: string;
+  onHashClick: (href: string) => void;
+  children: React.ReactNode;
+}) =>
+  href.startsWith("#") ? (
+    <button onClick={() => onHashClick(href)} className={className}>
+      {children}
+    </button>
+  ) : (
+    <Link to={href} className={className}>
+      {children}
+    </Link>
+  );
 
 const Footer = () => {
   const { sections, socials } = useFooterManager();
@@ -110,15 +142,16 @@ const Footer = () => {
               <ul className="space-y-2 pt-2">
                 {section.links?.map((link, lIdx) => (
                   <li key={lIdx} className="list-none">
-                    <button
-                      onClick={() => handleLinkClick(link.href)}
+                    <FooterLink
+                      href={link.href}
+                      onHashClick={handleLinkClick}
                       className="text-gray-400 hover:text-white flex items-center group transition-colors text-sm sm:text-base pl-4 cursor-pointer outline-none"
                     >
                       <div className="relative flex items-center">
                         <span className="absolute -left-4 w-0 group-hover:w-3 h-[2px] bg-[#FF8C00] transition-all duration-300"></span>
                         <span className="text-xl">{link.label}</span>
                       </div>
-                    </button>
+                    </FooterLink>
                   </li>
                 ))}
 
@@ -237,15 +270,16 @@ const Footer = () => {
                         <ul className="pb-5 space-y-3 pl-1">
                           {section.links?.map((link, lIdx) => (
                             <li key={lIdx} className="list-none">
-                              <button
-                                onClick={() => handleLinkClick(link.href)}
+                              <FooterLink
+                                href={link.href}
+                                onHashClick={handleLinkClick}
                                 className="text-gray-400 active:text-white flex items-center group transition-colors text-base pl-4 cursor-pointer outline-none"
                               >
                                 <div className="relative flex items-center">
                                   <span className="absolute -left-4 w-0 group-active:w-3 h-[2px] bg-[#FF8C00] transition-all duration-300"></span>
                                   <span>{link.label}</span>
                                 </div>
-                              </button>
+                              </FooterLink>
                             </li>
                           ))}
 
@@ -302,6 +336,33 @@ const Footer = () => {
             })}
           </div>
         </div>
+
+        {/* Crawlable sitemap — keeps every detail page one click from any page.
+            Without it these routes are only linked from the homepage body. */}
+        <nav
+          aria-label="Sitemap"
+          className="border-t border-white/10 mt-10 pt-10 pb-28 space-y-6"
+        >
+          {SITEMAP_GROUPS.map(({ heading, basePath, items }) => (
+            <div key={heading} className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+              <h3 className="text-white/60 font-black uppercase tracking-widest text-xs shrink-0 sm:w-28 pt-1">
+                {heading}
+              </h3>
+              <ul className="flex flex-wrap gap-x-5 gap-y-2">
+                {items.map((item) => (
+                  <li key={item.id} className="list-none">
+                    <Link
+                      to={`${basePath}/${item.id}`}
+                      className="text-gray-500 hover:text-white text-sm transition-colors"
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </nav>
       </Container>
     </footer>
   );

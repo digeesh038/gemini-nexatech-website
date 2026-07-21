@@ -27,8 +27,9 @@ export const FOOTER_DATA = {
                 { label: "Industries", href: "#industries" },
                 { label: "Video Library", href: "/video-library" },
                 { label: "Blogs", href: "/blogs" },
-                { label: "Privacy Policy", href: "/privacy-policy" },
-                { label: "Terms of Service", href: "/terms-of-service" },
+                // Privacy Policy / Terms of Service links removed: no such routes
+                // exist, so they rendered as soft 404s (HTTP 200, empty page).
+                // Re-add here once the pages and routes are built.
             ]
         },
         {

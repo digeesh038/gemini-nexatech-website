@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import Container from "../components/common/Container";
 import SEO from "../components/common/SEO";
+import { contactSchema, breadcrumbSchema } from "../seo/schema";
 
 const countries = [
   { name: "Afghanistan", code: "+93", iso: "af" },
@@ -529,9 +530,16 @@ const ContactPage = () => {
 
   return (
     <div className="bg-[#000510] text-white min-h-screen pt-15 relative overflow-hidden font-inter flex flex-col">
-      <SEO 
+      <SEO
         title="Contact Us"
         description="Get in touch with Gemini Nexatech. We provide expert consultation for your engineering and digital vision. Visit our office in Chennai or reach out via WhatsApp."
+        jsonLd={[
+          contactSchema(),
+          breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Contact Us", path: "/contact" },
+          ]),
+        ]}
       />
       {/* Background Glows */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[600px] bg-gemini-blue/10 blur-[120px] rounded-full pointer-events-none" />
